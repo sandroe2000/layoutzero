@@ -8,6 +8,7 @@ let app = {
             })
             .then(body => {
                 app.perfil = body;
+                console.info(body);
             })
             .catch (error => {
                 console.warn(error.message);
@@ -104,8 +105,8 @@ let app = {
     },
     perfil: {},
     mockScripts: {
-        perfil: '/mock/perfil.json',
-        countrys: '/mock/countrys.json'
+        perfil: 'http://localhost:3000/perfil',
+        countrys: 'http://localhost:3000/paises'
     },
     pages: {
         billing: "view/pages/billing",
