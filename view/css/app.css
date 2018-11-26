@@ -1,0 +1,131 @@
+nav{
+    background: #0178bc;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 60px;
+    padding-top: 60px;
+    padding-left: 7px;
+}
+
+header{
+    background: #0178bc;
+    background: -moz-linear-gradient(left, #0178bc 0%, #00bdda 100%);
+    background: -webkit-linear-gradient(left, #0178bc 0%, #00bdda 100%);
+    background: linear-gradient(to right, #0178bc 0%, #00bdda 100%);
+    position: absolute;
+    top: 0;
+    left: 60px;
+    right: 0;
+    height: 60px;
+}
+        
+main{
+    background: #f2f2f2;
+    position: absolute;
+    top: 60px;
+    bottom: 0;
+    left: 60px;
+    right: 0;
+    overflow-y: scroll;
+    padding: 7px;
+}
+
+.brand{
+    color: #fff;
+    font-size: 32px;
+}
+
+.table{
+    margin-bottom: 10px;
+}
+.table>thead>tr>th {
+    border-bottom: 1px solid #ddd !important;
+}
+td i{
+    float: right;
+    margin-top: 5px;
+    margin-left: 7px;
+    margin-right: 7px;
+}
+.table-condensed > thead > tr > th,
+.table-condensed > tbody > tr > th,
+.table-condensed > tfoot > tr > th,
+.table-condensed > thead > tr > td,
+.table-condensed > tbody > tr > td,
+.table-condensed > tfoot > tr > td {
+  padding: 5px;
+}
+
+.header-fixed {
+    width: 100% 
+}
+
+.header-fixed > thead,
+.header-fixed > tbody,
+.header-fixed > thead > tr,
+.header-fixed > tbody > tr,
+.header-fixed > thead > tr > th,
+.header-fixed > tbody > tr > td {
+    display: block;
+}
+
+.header-fixed > tbody > tr:after,
+.header-fixed > thead > tr:after {
+    content: ' ';
+    display: block;
+    visibility: hidden;
+    clear: both;
+}
+
+.header-fixed > tbody {
+    overflow-y: auto;
+}
+
+.header-fixed > tbody > tr > td,
+.header-fixed > thead > tr > th {
+    float: left;
+}
+
+/**** FOR FIREFOX *****/
+scrollbar {
+/*  clear useragent default style*/
+    -moz-appearance: none !important;
+}
+/* buttons at two ends */
+scrollbarbutton {
+    -moz-appearance: none !important;
+}
+/* the sliding part*/
+thumb{
+    -moz-appearance: none !important;
+}
+scrollcorner {
+    -moz-appearance: none !important;
+    resize:both;
+}
+/* vertical or horizontal */
+scrollbar[orient="vertical"] {
+    color:silver;
+}
+/**** FOR CHROME/SAFARI *****/
+/* width */
+::-webkit-scrollbar {
+    width: 7px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: #f1f1f1; 
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #ccc; 
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #888; 
+}

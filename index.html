@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="pt-br">
+
+<head>
+	<!-- Required meta tags -->
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+	<title>LayoutZero</title>
+
+	<!-- VENDOR CSS -->
+	<link rel="stylesheet" href="assets/components/bootstrap/dist/css/bootstrap.css" />
+	<link rel="stylesheet" href="assets/components/font-awesome/css/font-awesome.min.css" />
+	<link rel="stylesheet" href="assets/components/alertifyjs/css/alertify.css" />
+	<link rel="stylesheet" href="assets/components/alertifyjs/css/themes/default.min.css" />
+
+	<!-- App CSS -->
+	<link rel="stylesheet" href="view/css/app.css" />
+	<link rel="stylesheet" href="view/css/lzLeftNav.css" />
+</head>
+
+<body>
+
+	<header>
+		<div class="brand float-left mt-1">LayoutZero</div>
+		<form class="form-inline float-right mr-3" style="margin-top:11px">
+			<input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+			<button class="btn btn-success my-2 my-sm-0" type="submit">Search</button>
+		</form>
+	</header>
+
+	<nav>
+		<button type="button" class="btn btn-outline-secondary" data-html="view/pages/billing" data-js="view/scripts/billing">
+			<i class="fa fa-lg fa-user-plus" aria-hidden="true"></i>
+		</button>
+		<button type="button" class="btn btn-outline-secondary" data-html="view/pages/none">
+			<i class="fa fa-lg fa-cart-plus" aria-hidden="true"></i>
+		</button>
+		<button type="button" class="btn btn-outline-secondary" data-html="view/pages/none">
+			<i class="fa fa-lg fa-cogs" aria-hidden="true"></i>
+		</button>
+	</nav>
+
+	<main>
+		<div id="secPrincipal" class="container-fluid"></div>
+	</main>
+
+	<!-- Vendor Javascript-->
+	<script src="assets/components/alertifyjs/alertify.min.js"></script>
+
+	<!-- App JavaScript -->
+	<script src="assets/app.js"></script>
+	<script src="assets/module/lzLeftNav.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,11 @@
+{
+    "nome": "Sandro C. Espindula",
+    "dataNascimento": "19/05/1973",
+    "sexo": "M",
+    "acesso": {
+        "secPrincipal": "VW",
+        "secPayment": "V",
+        "secYourCart": "V",
+        "billingCountry": "V"
+    }
+}

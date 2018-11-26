@@ -1,0 +1,21 @@
+{
+    "name": "frontend",
+    "version": "0.0.1",
+    "description": "App",
+    "author": "sandroe2000@gmail.com",
+    "contributors": {
+        "name": "Sandro C. Espindula",
+        "email": "sandroe2000@gmail.com"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://bitbucket.org/sandroe2000/frontend"
+    },
+    "license": "MIT",
+    "private": true,
+    "devDependencies": {
+        "gulp": "^3.9.1",
+        "gulp-webserver": "^0.9.1",
+        "opn": "^5.2.0"
+    }
+}
