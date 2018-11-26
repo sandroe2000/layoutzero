@@ -4,7 +4,7 @@
     "sexo": "M",
     "acesso": {
         "secPrincipal": "VW",
-        "secPayment": "V",
+        "secPayment": "VW",
         "secYourCart": "V",
         "billingCountry": "V"
     }

@@ -2,13 +2,13 @@ let billing = {
     init: () => {   
         Promise.all([
             new Promise((resolve, reject)=>{
-                app.fetchToPage(document.getElementById('secYourCart'), 'view/pages/yourCart', 'view/scripts/yourCart');
-            }),
-            new Promise((resolve, reject)=>{
                 app.fetchToPage(document.getElementById('secPayment'), 'view/pages/payment', 'view/scripts/payment');
             }),
             new Promise((resolve, reject)=>{
-                billing.hasAccess();
+                app.fetchToPage(document.getElementById('secYourCart'), 'view/pages/yourCart', 'view/scripts/yourCart');
+            }),
+            new Promise((resolve, reject)=>{
+                billing.hasAccessWrite();
             }),
             new Promise((resolve, reject)=>{
                 billing.loadCountry(document.querySelector('#billingCountry'), app.mockScripts.countrys);
@@ -19,7 +19,7 @@ let billing = {
             console.warn('Falha!', reason);
         });        
     },
-    hasAccess: () => {
+    hasAccessWrite: () => {
         if(!app.hasAccess(document.querySelector('#secPrincipal'), 'W')){       
             document.querySelector('#firstName').setAttribute("disabled", "disabled");
             document.querySelector('#lastName').setAttribute("disabled", "disabled");

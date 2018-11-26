@@ -1,18 +1,18 @@
 let app = {
     init: () => {
         //debugger;
-        let json = null;
-        try{
-            fetch(app.mockScripts.perfil)
-                .then(response => {
-                    return response.json();            
-                })
-                .then(body => {
-                    app.perfil = body;
-                });
-        } catch (error) {
-            console.log(error.message);
-        }
+        let json = null;       
+        fetch(app.mockScripts.perfil)
+            .then(response => {
+                return response.json();            
+            })
+            .then(body => {
+                app.perfil = body;
+            })
+            .catch (error => {
+                console.warn(error.message);
+            });
+        
     },
     //GRANT_KEYS => VIEW: V, WRITE: W, DELETE: D, ex.: "VWD"
     hasAccess: (destiny, grantKey) => {
@@ -77,6 +77,7 @@ let app = {
             });        
         
     },
+    //TODO - Combos com dependencia de outro combo(ou campo)
     fetchToSelect: (select, url, optionSelected) => {
         if(!select) return false;
         if(!app.hasAccess(select, 'V')) return false;
