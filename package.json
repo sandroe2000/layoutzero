@@ -1,5 +1,5 @@
 {
-    "name": "frontend",
+    "name": "layoutzero",
     "version": "0.0.1",
     "description": "App",
     "author": "sandroe2000@gmail.com",
@@ -9,7 +9,7 @@
     },
     "repository": {
         "type": "git",
-        "url": "https://bitbucket.org/sandroe2000/frontend"
+        "url": "https://github.com/sandroe2000/layoutzero.git"
     },
     "license": "MIT",
     "private": true,
