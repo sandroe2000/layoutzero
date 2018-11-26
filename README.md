@@ -8,7 +8,7 @@ To begin using this template, choose one of the following options to get started
 
 After cloning the repo take a look at the `gulpfile.js` and check out the tasks available:
 * `npm install` This will download all dependencies
-* `gulp` The dev task will serve up a local version of the template and will watch HTML files for changes and reload the browser windo automatically
+* `gulp` The "gulp" task will serve up a local version of the template and will watch HTML, Javascript and Css files for changes and reload the browser window automatically
 
 ## Creator
 
