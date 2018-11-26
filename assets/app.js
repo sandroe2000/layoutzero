@@ -101,7 +101,6 @@ let app = {
             .catch (error => {
                 console.warn(error.message);
             });
-        
     },
     perfil: {},
     mockScripts: {

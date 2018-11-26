@@ -4,15 +4,8 @@ let lzLeftNav = {
             let _obj = lzLeftNav.__getEventTargetObject(event);
             if(!_obj) return false;            
             lzLeftNav.__setNavStyle(_obj);    
-            lzLeftNav.__fetchToContainer(_obj);
+            app.fetchToPage(document.querySelector('main div.container-fluid'), _obj.getAttribute('data-html'), _obj.getAttribute('data-js'));
         }, false);
-    },
-    __fetchToContainer: (_obj) => {
-        app.fetchToPage(
-           document.querySelector('main div.container-fluid'), 
-           _obj.getAttribute('data-html'),
-           _obj.getAttribute('data-js')
-        );
     },
     __getEventTargetObject: (event) => {
         let pEl = event.target.parentNode;

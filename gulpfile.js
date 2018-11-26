@@ -6,9 +6,11 @@ var opn       = require('opn');
 var sourcePaths = {
   files: [
     './index.html',
-    './*.html', 
-    './css/*.*css', 
-    './js/**/*.js'
+    './view/pages/*.html', 
+    './view/css/*.*css', 
+    './view/scripts/*.js',
+    './assets/*.js',
+    './assets/module/*.js'
   ]
 };
 
