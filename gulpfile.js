@@ -22,14 +22,8 @@ var server = {
 gulp.task('webserver', function() {
   gulp.src( './' )
     .pipe(webserver({
-      host:             server.host,
-      port:             server.port,
-      livereload:       true,
-      directoryListing: false,
-      proxies: [{
-          source: '/api', 
-          target: 'http://localhost:1000/api/'
-      }]
+      port: server.port,
+      livereload: true
     }));
 });
 

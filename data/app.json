@@ -1,23 +1,72 @@
 {
     "perfil": {
-        "nome": "Sandro C. Espindula",
+        "name": "Sandro C. Espindula",
         "dataNascimento": "19/05/1973",
         "sexo": "M",
         "acesso": {
             "secPrincipal": "VW",
             "secPayment": "VW",
             "secYourCart": "V",
-            "billingCountry": "V"
+            "billingCountry": "V",
+            "billingState": "V"
         }
     },
     "paises": [
-        {"name": "Argentina", "code": "ARG"},
-        {"name": "Brasil", "code": "BRA"},
-        {"name": "Chile", "code": "CHI"},
-        {"name": "Colômbia", "code": "COL"},
-        {"name": "Paraguai", "code": "PAR"}, 
-        {"name": "Peru", "code": "PER"},
-        {"name": "Uruguai", "code": "URU"},
-        {"name": "Venezuela", "code": "VEN"}
+        {
+            "id": 1,
+            "name": "Argentina", 
+            "code": "ARG"
+        }, {
+            "id": 2,
+            "name": "Brasil", 
+            "code": "BRA"
+        },
+        {"id": 4, "name": "Chile", "code": "CHI"},
+        {"id": 5, "name": "Colômbia", "code": "COL"},
+        {"id": 6, "name": "Paraguai", "code": "PAR"}, 
+        {"id": 7, "name": "Peru", "code": "PER"},
+        {"id": 8, "name": "Uruguai", "code": "URU"},
+        {"id": 9, "name": "Venezuela", "code": "VEN"}
+    ],
+    "provincias": [
+        {
+            "id": 1,
+            "estados": [
+                {"name": "Buenos Aires", "code": "Buenos Aires"},
+                {"name": "Catamarca", "code": "Catamarca"},
+                {"name": "Chaco", "code": "Chaco"}
+            ]
+        },{ 
+            "id": 2,
+            "estados": [
+                {"name": "Acre", "code": "AC"},
+                {"name": "Alagoas", "code": "AL"},
+                {"name": "Amapá", "code": "AP"},
+                {"name": "Amazonas", "code": "AM"},
+                {"name": "Bahia", "code": "BA"},
+                {"name": "Ceará", "code": "CE"},
+                {"name": "Distrito Federal", "code": "DF"},
+                {"name": "Espírito Santo", "code": "ES"},
+                {"name": "Goiás", "code": "GO"},
+                {"name": "Maranhão", "code": "MA"},
+                {"name": "Mato Grosso", "code": "MT"},
+                {"name": "Mato Grosso do Sul", "code": "MS"},
+                {"name": "Minas Gerais", "code": "MG"},
+                {"name": "Pará", "code": "PA"},
+                {"name": "Paraíba", "code": "PB"},
+                {"name": "Paraná", "code": "PR"},
+                {"name": "Pernambuco", "code": "PE"},
+                {"name": "Piauí", "code": "PI"},
+                {"name": "Rio de Janeiro", "code": "RJ"},
+                {"name": "Rio Grande do Norte", "code": "RN"},
+                {"name": "Rio Grande do Sul", "code": "RS"},
+                {"name": "Rondônia", "code": "RO"},
+                {"name": "Roraima", "code": "RR"},
+                {"name": "Santa Catarina", "code": "SC"},
+                {"name": "São Paulo", "code": "SP"},
+                {"name": "Sergipe", "code": "SE"},
+                {"name": "Tocantins", "code": "TO"}
+            ]
+        }
     ]
 }

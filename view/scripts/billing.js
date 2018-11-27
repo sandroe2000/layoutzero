@@ -11,7 +11,7 @@ let billing = {
                 billing.hasAccessWrite();
             }),
             new Promise((resolve, reject)=>{
-                billing.loadCountry(document.querySelector('#billingCountry'), app.mockScripts.countrys);
+                billing.loadCountry('#billingCountry', app.mockScripts.paises);
             })
         ]).then(result =>{
             console.info('OK');
@@ -28,7 +28,7 @@ let billing = {
             document.querySelector('#address').setAttribute("disabled", "disabled");
             document.querySelector('#address2').setAttribute("disabled", "disabled");
             document.querySelector('#billingCountry').setAttribute("disabled", "disabled");
-            document.querySelector('#state').setAttribute("disabled", "disabled");
+            document.querySelector('#billingState').setAttribute("disabled", "disabled");
             document.querySelector('#zip').setAttribute("disabled", "disabled");
             document.querySelector('#same-address').setAttribute("disabled", "disabled");
             document.querySelector('#save-info').setAttribute("disabled", "disabled");
@@ -36,7 +36,20 @@ let billing = {
         }
     },
     loadCountry: (select, url) => {
-        app.fetchToSelect(select, url);
+        let selConf = {
+            val: 'code', 
+            text: 'name'
+        };
+        app.fetchToSelect(select, url, selConf);
+        document.querySelector(select).addEventListener('change', function(event){
+            selConf = {
+                val: 'code', 
+                text: 'name',
+                list: 'estados'
+            };
+            let url = 'http://localhost:3000/provincias/'.concat(document.querySelector(select).selectedIndex);
+            app.fetchToSelect('#billingState', url, selConf);
+        });
     }
 };
 billing.init();

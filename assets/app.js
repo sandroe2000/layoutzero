@@ -79,24 +79,44 @@ let app = {
         
     },
     //TODO - Combos com dependencia de outro combo(ou campo)
-    fetchToSelect: (select, url, optionSelected) => {
-        if(!select) return false;
-        if(!app.hasAccess(select, 'V')) return false;
+    // selConf.optionSelected, 
+    // selConf.val, 
+    // selConf.text
+    // selConf.list
+    fetchToSelect: (select, url, selConf) => {
+        let combo = document.querySelector(select);
+        if(!combo) return false;
+        if(!app.hasAccess(combo, 'V')) return false;
         
         fetch(url)
             .then(response => { 
                 return response.text();
             })
             .then(body => { 
-                JSON.parse(body).forEach(country => {
+                let json = JSON.parse(body);
+
+                if(json[selConf.list]){
+                    json = json[selConf.list];
+                }
+
+                document.querySelectorAll(select.concat(' option')).forEach(option => {
+                    option.remove();
+                });
+
+                let option = document.createElement('option');
+                    option.value = "";
+                    option.text = "Choose...";
+                combo.appendChild(option);
+
+                json.forEach(item => {
                     console.info(body);
                     let option = document.createElement('option');
-                    option.value = country.code;
-                    option.text = country.name;
-                    if(optionSelected==country.code){
+                    option.value = item[selConf.val];
+                    option.text = item[selConf.text];
+                    if(selConf.optionSelected && selConf.optionSelected==item[selConf.val]){
                         option.selected = true;
                     }
-                    select.appendChild(option);
+                    combo.appendChild(option);
                 });
             })
             .catch (error => {
@@ -106,7 +126,8 @@ let app = {
     perfil: {},
     mockScripts: {
         perfil: 'http://localhost:3000/perfil',
-        countrys: 'http://localhost:3000/paises'
+        paises: 'http://localhost:3000/paises',
+        estados: 'http://localhost:3000/estados'
     },
     pages: {
         billing: "view/pages/billing",
