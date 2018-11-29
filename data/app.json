@@ -7,37 +7,27 @@
             "secPrincipal": "VW",
             "secPayment": "VW",
             "secYourCart": "V",
+            "secModal": "V",
+            "secInsideModal": "V",
             "billingCountry": "V",
             "billingState": "V"
         }
     },
     "paises": [
         {
-            "id": 1,
+            "id": 1, 
             "name": "Argentina", 
-            "code": "ARG"
-        }, {
-            "id": 2,
-            "name": "Brasil", 
-            "code": "BRA"
-        },
-        {"id": 4, "name": "Chile", "code": "CHI"},
-        {"id": 5, "name": "Colômbia", "code": "COL"},
-        {"id": 6, "name": "Paraguai", "code": "PAR"}, 
-        {"id": 7, "name": "Peru", "code": "PER"},
-        {"id": 8, "name": "Uruguai", "code": "URU"},
-        {"id": 9, "name": "Venezuela", "code": "VEN"}
-    ],
-    "provincias": [
-        {
-            "id": 1,
+            "code": "ARG",
             "estados": [
                 {"name": "Buenos Aires", "code": "Buenos Aires"},
                 {"name": "Catamarca", "code": "Catamarca"},
                 {"name": "Chaco", "code": "Chaco"}
             ]
-        },{ 
-            "id": 2,
+        }, 
+        {
+            "id": 2, 
+            "name": "Brasil", 
+            "code": "BRA",
             "estados": [
                 {"name": "Acre", "code": "AC"},
                 {"name": "Alagoas", "code": "AL"},
@@ -67,6 +57,12 @@
                 {"name": "Sergipe", "code": "SE"},
                 {"name": "Tocantins", "code": "TO"}
             ]
-        }
+        },
+        {"id": 3, "name": "Chile", "code": "CHI", "estados": []},
+        {"id": 4, "name": "Colômbia", "code": "COL", "estados": []},
+        {"id": 5, "name": "Paraguai", "code": "PAR", "estados": []},
+        {"id": 6, "name": "Peru", "code": "PER", "estados": []},
+        {"id": 7, "name": "Uruguai", "code": "URU", "estados": []},
+        {"id": 8, "name": "Venezuela", "code": "VEN", "estados": []}
     ]
 }

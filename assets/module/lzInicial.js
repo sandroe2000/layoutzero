@@ -1,13 +1,13 @@
-let app = {
+let lzInicial = {
     init: () => {
         //debugger;
         let json = null;       
-        fetch(app.mockScripts.perfil)
+        fetch(lzInicial.mockScripts.perfil)
             .then(response => {
                 return response.json();            
             })
             .then(body => {
-                app.perfil = body;
+                lzInicial.perfil = body;
                 console.info(body);
             })
             .catch (error => {
@@ -21,9 +21,9 @@ let app = {
         if(!destiny) return false;
         let retorno = false;
         try {
-            Object.keys(app.perfil.acesso).forEach(function eachKey(key) { 
+            Object.keys(lzInicial.perfil.acesso).forEach(function eachKey(key) { 
                 if(key == destiny.getAttribute('id')){
-                    retorno = app.perfil.acesso[key].includes(grantKey);
+                    retorno = lzInicial.perfil.acesso[key].includes(grantKey);
                 }
             });
             console.info(retorno);
@@ -35,7 +35,7 @@ let app = {
     fetchToPage: (destiny, urlHtml, urlJs) => {
         //debugger;
         if(!destiny) return false;
-        if(!app.hasAccess(destiny, 'V')) return false;
+        if(!lzInicial.hasAccess(destiny, 'V')) return false;
         if(!urlHtml) return false;
         
         fetch(urlHtml.concat('.html'))
@@ -86,7 +86,7 @@ let app = {
     fetchToSelect: (select, url, selConf) => {
         let combo = document.querySelector(select);
         if(!combo) return false;
-        if(!app.hasAccess(combo, 'V')) return false;
+        if(!lzInicial.hasAccess(combo, 'V')) return false;
         
         fetch(url)
             .then(response => { 
@@ -126,17 +126,26 @@ let app = {
     perfil: {},
     mockScripts: {
         perfil: 'http://localhost:3000/perfil',
-        paises: 'http://localhost:3000/paises',
-        estados: 'http://localhost:3000/estados'
+        paises: 'http://localhost:3000/paises'
+    },
+    modules: {
+        lzModal: "assets/module/pages/lzModal"
+    },
+    modulesJs: {
+        lzModal: "assets/module/lzModal"
     },
     pages: {
         billing: "view/pages/billing",
+        payment: "view/pages/payment",
+        yourCart: "view/pages/yourCart",
+        cep: "view/pages/cep",
         none: "view/pages/none"
     },
     scripts: {
         billing: "view/scripts/billing",
         yourCart: "view/scripts/yourCart",
-        payment: "view/scripts/payment"
+        payment: "view/scripts/payment",
+        cep: "view/scripts/cep"
     }
 };
-app.init();
+lzInicial.init();

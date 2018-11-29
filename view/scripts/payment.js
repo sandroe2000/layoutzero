@@ -1,6 +1,6 @@
 let payment = {
     init: () => {
-        if(!app.hasAccess(document.querySelector('#secPayment'), 'W')){
+        if(!lzInicial.hasAccess(document.querySelector('#secPayment'), 'W')){
 
             document.getElementsByName('paymentMethod').forEach( payMet => {
                 payMet.checked = false; 

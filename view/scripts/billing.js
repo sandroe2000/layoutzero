@@ -2,16 +2,17 @@ let billing = {
     init: () => {   
         Promise.all([
             new Promise((resolve, reject)=>{
-                app.fetchToPage(document.getElementById('secPayment'), 'view/pages/payment', 'view/scripts/payment');
+                lzInicial.fetchToPage(document.getElementById('secPayment'), lzInicial.pages.payment, lzInicial.scripts.payment);
             }),
             new Promise((resolve, reject)=>{
-                app.fetchToPage(document.getElementById('secYourCart'), 'view/pages/yourCart', 'view/scripts/yourCart');
+                lzInicial.fetchToPage(document.getElementById('secYourCart'), lzInicial.pages.yourCart, lzInicial.scripts.yourCart);
             }),
             new Promise((resolve, reject)=>{
                 billing.hasAccessWrite();
             }),
             new Promise((resolve, reject)=>{
-                billing.loadCountry('#billingCountry', app.mockScripts.paises);
+                billing.loadCountry('#billingCountry', lzInicial.mockScripts.paises);
+                billing.loadSearchCEP();
             })
         ]).then(result =>{
             console.info('OK');
@@ -20,7 +21,7 @@ let billing = {
         });        
     },
     hasAccessWrite: () => {
-        if(!app.hasAccess(document.querySelector('#secPrincipal'), 'W')){       
+        if(!lzInicial.hasAccess(document.querySelector('#secPrincipal'), 'W')){       
             document.querySelector('#firstName').setAttribute("disabled", "disabled");
             document.querySelector('#lastName').setAttribute("disabled", "disabled");
             document.querySelector('#username').setAttribute("disabled", "disabled");
@@ -40,16 +41,21 @@ let billing = {
             val: 'code', 
             text: 'name'
         };
-        app.fetchToSelect(select, url, selConf);
+        lzInicial.fetchToSelect(select, url, selConf);
         document.querySelector(select).addEventListener('change', function(event){
             selConf = {
                 val: 'code', 
                 text: 'name',
                 list: 'estados'
             };
-            let url = 'http://localhost:3000/provincias/'.concat(document.querySelector(select).selectedIndex);
-            app.fetchToSelect('#billingState', url, selConf);
-        });
+            let url = 'http://localhost:3000/paises/'.concat(document.querySelector(select).selectedIndex);
+            lzInicial.fetchToSelect('#billingState', url, selConf);
+        }, false);
+    },
+    loadSearchCEP: () => {
+        document.querySelector('#btnSearchCEP').addEventListener('click', function(event){
+            lzModal.openModal(lzInicial.pages.cep, lzInicial.scripts.cep);
+        }, false);
     }
 };
 billing.init();

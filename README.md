@@ -10,7 +10,8 @@ After cloning the repo take a look at the `gulpfile.js` and check out the tasks 
 * `npm install` This will download all dependencies
 * `gulp` The "gulp" task will serve up a local version of the template and will watch HTML, Javascript and Css files for changes and reload the browser window automatically
 
-Special atention for `JSON Server`, a mock json DB, more abolt in https://github.com/typicode/json-server
+Special atention for `JSON Server`, a mock json DB, more abolt in https://github.com/typicode/json-server, to start:
+* json-server --watch data/app.json
 
 ## Creator
 
