@@ -19,18 +19,21 @@
 		<div class="brand float-left mt-1">LayoutZero</div>
 		<form class="form-inline float-right mr-3" style="margin-top:11px">
 			<input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-			<button class="btn btn-success my-2 my-sm-0" type="submit">Search</button>
+			<button class="btn btn-success my-2 my-sm-0" type="submit">Busca</button>
 		</form>
 	</header>
 	<nav>
-		<button type="button" class="btn btn-outline-secondary" data-html="view/pages/billing" data-js="view/scripts/billing">
-			<i class="fa fa-lg fa-user-plus" aria-hidden="true"></i>
+		<button type="button" class="btn btn-outline-secondary" data-modal="MODAL" data-html="view/pages/searchCustomer" data-js="view/scripts/searchCustomer">
+			<i class="fa fa-lg fa-search-plus" aria-hidden="true"></i>
 		</button>
-		<button type="button" class="btn btn-outline-secondary" data-html="view/pages/none">
-			<i class="fa fa-lg fa-cart-plus" aria-hidden="true"></i>
+		<button type="button" class="btn btn-outline-secondary" data-html="view/pages/customer" data-js="view/scripts/customer">
+			<i class="fa fa-lg fa-user" aria-hidden="true"></i>
 		</button>
-		<button type="button" class="btn btn-outline-secondary" data-html="view/pages/none">
-			<i class="fa fa-lg fa-cogs" aria-hidden="true"></i>
+		<button type="button" class="btn btn-outline-secondary" data-html="view/pages/customerService" data-js="view/scripts/customerService">
+			<i class="fa fa-lg fa-comments-o" aria-hidden="true"></i>
+		</button>
+		<button type="button" class="btn btn-outline-secondary" data-html="view/pages/administration" data-js="view/scripts/administration">
+			<i class="fa fa-lg fa-lock" aria-hidden="true"></i>
 		</button>
 	</nav>
 	<main>
@@ -38,13 +41,13 @@
 	</main>
 	<section id="secModal"></section>
 	<!-- Vendor Javascript-->
-	<script src="assets/components/jquery/jquery-3.3.1.slim.min.js"></script>
-	<script src="assets/components/popper.js/popper.min.js"></script>
-	<script src="assets/components/bootstrap/dist/js/bootstrap.min.js"></script>
-	<script src="assets/components/alertifyjs/alertify.min.js"></script>
+	<script src="assets/components/bootstrap/dist/js/bootstrap-native-v4.min.js"></script>
+	<script src="https://unpkg.com/vanilla-datatables@latest/dist/vanilla-dataTables.min.js" type="text/javascript"></script>
 	<!-- App JavaScript -->
 	<script src="assets/module/lzInicial.js"></script>
 	<script src="assets/module/lzLeftNav.js"></script>
 	<script src="assets/module/lzModal.js"></script>
+	<script src="assets/module/lzComboBox.js"></script>
+	<script src="assets/module/lzDataTable.js"></script>
 </body>
 </html>

@@ -8,7 +8,6 @@ let lzInicial = {
             })
             .then(body => {
                 lzInicial.perfil = body;
-                console.info(body);
             })
             .catch (error => {
                 console.warn(error.message);
@@ -26,7 +25,6 @@ let lzInicial = {
                     retorno = lzInicial.perfil.acesso[key].includes(grantKey);
                 }
             });
-            console.info(retorno);
         } catch (error) {
             console.warn(error.message);
         }
@@ -40,15 +38,12 @@ let lzInicial = {
         
         fetch(urlHtml.concat('.html'))
             .then(response => { 
-                console.info(response);
                 return response.text();
             })
             .then(_html => { 
-                console.info(_html);
                 return destiny.innerHTML = _html;
             })
             .then(_load => {
-                console.info(_load);
                 if(urlJs){
                     let body = document.getElementsByTagName('body')[0];
                     let buildJS = true;
@@ -78,7 +73,7 @@ let lzInicial = {
             });        
         
     },
-    //TODO - Combos com dependencia de outro combo(ou campo)
+    //TODO - Load url or Json Object
     // selConf.optionSelected, 
     // selConf.val, 
     // selConf.text
@@ -123,10 +118,83 @@ let lzInicial = {
                 console.warn(error.message);
             });
     },
+    populate: function( form, data, basename) {
+
+		for(var key in data) {
+
+			if( ! data.hasOwnProperty( key ) ) {
+				continue;
+			}
+
+			var name = key;
+			var value = data[key];
+
+                        if ('undefined' === typeof value) {
+                            value = '';
+                        }
+
+                        if (null === value) {
+                            value = '';
+                        }
+
+			// handle array name attributes
+			if(typeof(basename) !== "undefined") {
+				name = basename + "[" + key + "]";
+			}
+
+			if(value.constructor === Array) {
+				name += '[]';
+			} else if(typeof value == "object") {
+				populate( form, value, name);
+				continue;
+			}
+
+			// only proceed if element is set
+			var element = form.elements.namedItem( name );
+			if( ! element ) {
+				continue;
+			}
+
+			var type = element.type || element[0].type;
+
+			switch(type ) {
+				default:
+					element.value = value;
+					break;
+
+				case 'radio':
+				case 'checkbox':
+					for( var j=0; j < element.length; j++ ) {
+						element[j].checked = ( value.indexOf(element[j].value) > -1 );
+					}
+					break;
+
+				case 'select-multiple':
+					var values = value.constructor == Array ? value : [value];
+
+					for(var k = 0; k < element.options.length; k++) {
+						element.options[k].selected |= (values.indexOf(element.options[k].value) > -1 );
+					}
+					break;
+
+				case 'select':
+				case 'select-one':
+					element.value = value.toString() || value;
+					break;
+				case 'date':
+          				element.value = new Date(value).toISOString().split('T')[0];	
+					break;
+			}
+
+		}
+
+	},
     perfil: {},
     mockScripts: {
         perfil: 'http://localhost:3000/perfil',
-        paises: 'http://localhost:3000/paises'
+        paises: 'http://localhost:3000/paises',
+        pageCustomer: 'http://localhost:3000/customer',
+        customers: 'http://localhost:3000/customers/'
     },
     modules: {
         lzModal: "assets/module/pages/lzModal"

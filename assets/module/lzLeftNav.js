@@ -2,10 +2,18 @@ let lzLeftNav = {
     init: () => {
         document.querySelector('nav').addEventListener('click', function(event){
             let _obj = lzLeftNav.__getEventTargetObject(event);
-            if(!_obj) return false;            
-            lzLeftNav.__setNavStyle(_obj);    
-            lzInicial.fetchToPage(document.querySelector('main div.container-fluid'), _obj.getAttribute('data-html'), _obj.getAttribute('data-js'));
+            lzLeftNav.fetchToPage(_obj);
         }, false);
+    },
+    fetchToPage: (_obj) => {
+        
+        if(!_obj) return false;     
+        lzLeftNav.__setNavStyle(_obj);    
+        if(_obj.getAttribute('data-modal')){
+            lzModal.fetchToPage(document.querySelector('#secModal'), _obj.getAttribute('data-html'), _obj.getAttribute('data-js'));
+        }else{       
+            lzInicial.fetchToPage(document.querySelector('main div.container-fluid'), _obj.getAttribute('data-html'), _obj.getAttribute('data-js'));
+        }
     },
     __getEventTargetObject: (event) => {
         let pEl = event.target.parentNode;

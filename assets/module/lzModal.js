@@ -1,19 +1,11 @@
 let lzModal = {
     init: () => {
-        $('#modalCenter').on('hide.bs.modal', function(event) {
-
-            document.querySelectorAll('.modal-backdrop').forEach(item => {
-                item.remove();
-            });
-            document.querySelectorAll('.modal').forEach(item => {
-                item.remove();
-            });
-        });
+        let modal = document.querySelector('#modalCenter');
     },
-    openModal: (urlHtml, urlJs) => {
+    fetchToPage: (destiny, urlHtml, urlJs) => {
         //debugger;
-        if(!document.getElementById('secModal')) return false;
-        if(!lzInicial.hasAccess(document.getElementById('secModal'), 'V')) return false;
+        if(!destiny) return false;
+        if(!lzInicial.hasAccess(destiny, 'V')) return false;
         if(!urlHtml) return false;
 
         fetch(lzInicial.modules.lzModal.concat('.html'))
@@ -21,7 +13,7 @@ let lzModal = {
                 return response.text();
             })
             .then(_html => { 
-                return document.getElementById('secModal').innerHTML = _html;
+                return destiny.innerHTML = _html;
             })
             .then(_load => {
                 if(lzInicial.modulesJs.lzModal){
@@ -85,11 +77,24 @@ let lzModal = {
                     });
             })
             .then(exec => {
-                $('#modalCenter').modal('show');
+                lzModal.show();
             })
             .catch (error => {
                 console.warn(error.message);
             });
+    },
+    show: () => {
+        let modal = document.querySelector('#modalCenter');
+                let modalInstance = new Modal(modal);
+                modalInstance.show({
+                    backdrop: 'static',
+                    keyboard: false
+                });
+    },
+    hide: () => {
+        let modal = document.querySelector('#modalCenter');
+        let modalInstance = new Modal(modal);
+        modalInstance.hide();
     }
 };
 lzModal.init();

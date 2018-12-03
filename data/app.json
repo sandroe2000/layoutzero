@@ -1,8 +1,11 @@
 {
     "perfil": {
-        "name": "Sandro C. Espindula",
+        "id": 1,
+        "login": "sandroe2000@gmail.com",
+        "senha": "123456",
+        "nome": "Sandro C. Espindula",
         "dataNascimento": "19/05/1973",
-        "sexo": "M",
+        "genero": "M",
         "acesso": {
             "secPrincipal": "VW",
             "secPayment": "VW",
@@ -10,7 +13,8 @@
             "secModal": "V",
             "secInsideModal": "V",
             "billingCountry": "V",
-            "billingState": "V"
+            "billingState": "V",
+            "formaDeTratamento": "V"
         }
     },
     "paises": [
@@ -64,5 +68,32 @@
         {"id": 6, "name": "Peru", "code": "PER", "estados": []},
         {"id": 7, "name": "Uruguai", "code": "URU", "estados": []},
         {"id": 8, "name": "Venezuela", "code": "VEN", "estados": []}
+    ],
+    "customer": {
+
+        "formaDeTratamento": [
+            {"id": 1, "descricao": "Você"},
+            {"id": 2, "descricao": "Senhor(a)"}
+        ]
+    },
+    "customers": [
+        {
+            "id": 1,
+            "formaDeTratamento": 1,
+            "nome": "Sandro C. Espindula",
+            "dataNascimento": "19/05/1973",
+            "genero": "M",
+            "CPF": "00.000.000-01",
+            "telefone": "(21)9918-8372"
+        },
+        {
+            "id": 2,
+            "formaDeTratamento": 1,
+            "nome": "Mariane C. Espindula",
+            "dataNascimento": "01/03/1997",
+            "genero": "F",
+            "CPF": "00.000.000-02",
+            "telefone": ""
+        }
     ]
 }
