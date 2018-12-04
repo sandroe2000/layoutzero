@@ -1,0 +1,77 @@
+MiniSAC - Tabela de funcionalidades
+
+ATENDIMENTO AO CLIENTE
+Filas de atendimento personalizadas
+Pesquisa de satisfação
+Perfil de clientes
+Controle e gestão de SLA
+Notificações para clientes, agentes e gestores
+Classificações personalizadas de chamados
+Gestão de evolução de tickets
+Anotações internas nos tickets
+Linha do tempo para visualização interativa do histórico do chamado
+Recebimento e envio de anexos
+Automatização de fila de trabalho (workflow)
+Respostas salvas e automatizadas (Macros)
+ 
+CANAIS
+Email
+Chat
+Formulários
+Telefone
+Facebook
+WhatsApp
+Portal de autoatendimento
+
+
+GESTÃO DE CLIENTES
+Central de ajuda personalizada e segmentada
+Gestão de organizações, clientes e grupos
+Identificação automática de clientes
+Gestão de produtos e serviços
+Linha do tempo do cliente com os eventos relevantes de seu histórico
+
+
+CONTROLE DE SLA
+Regras de SLA baseadas em produtos e serviços
+Definição de múltiplas regras de SLA
+SLA com tempo limite para primeira resposta, atendimento e prazo de resolução
+SLA baseado em prioridades, organizações, canais de entrada, assuntos ou solicitantes
+
+
+RELATÓRIOS
+Painel para monitorar atendimento em tempo real
+Relatórios em XLS e PDF
+Relatórios personalizados
+Relatórios com filtros avançados
+Log de auditoria
+
+
+INTEGRAÇÕES
+APIs para múltiplas integrações
+Formulário para abertura de chamados em diversos websites
+Relatórios sobre produtos ou serviços
+Integração com bases externas de clientes
+Integração com bases externas de produtos e serviços
+
+
+PERSONALIZAÇÃO
+Personalização de dias e horários de expediente
+Múltiplos expedientes personalizados
+Cadastro de feriados pontuais e recorrentes
+Configuração de múltiplos e-mails de atendimento
+
+
+CHAT
+Relatório de atendimentos
+Fluxos personalizados por departamento
+Formulário de entrada personalizável
+Integrável com seu site
+Autoatendimento integrado com base de conhecimento
+
+
+VOICE
+URA personalizável
+Múltiplos números e ramais
+Geração automática de tickets
+Gravação automática da conversa do ticket

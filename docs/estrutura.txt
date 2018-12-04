@@ -1,0 +1,178 @@
+SAC
+ |-Login
+ |-Pessoa
+ |  |-Identificação
+ |  |-Endereço
+ |  |-Dados Complementares
+ |-Chamado
+ |  |-Manifesto
+ |  |  |-Destinatário
+ |  |  |-Follow-Up
+ |  |  |-Conclusão 
+ |  |-Informação ***
+ |  |-Pesquisa ***
+ |-Central de Emails ***
+ |-Canais de Contato(Chamado automatico) ***
+ |-Respostas Automaticas ***
+
+Pessoas
+ |-id(pk)(idx)
+ |-matricula(idx)
+ |-formaDeTratamento
+ |-nomeCompleto(idx)
+ |-dataNascimento
+ |-estadoCivil
+ |-idGenero
+ |-pessoaFisicaJuridica
+ |-naoContactarSms
+ |-naoContactarEmail
+ |-naoContactarWhatsApp
+ |-naoContactarTelefone
+
+Genero
+ |-id
+ |-descricao
+
+Documentos
+ |-id
+ |-idPessoa
+ |-idTipoDocumento
+ |-numero
+
+TiposDeDocumentos
+ |-id
+ |-descricao
+ 
+Telefones
+ |-id(pk)(idx)
+ |-idPessoa(idx)
+ |-idTipoTelefone
+ |-DDI
+ |-DDD
+ |-numero
+ |-telefonePrincipal
+
+Enderecos
+ |-id(pk)(idx)
+ |-idPessoa(fk)(idx)
+ |-idTipoEndereco(fk)
+ |-Pais
+ |-uf
+ |-cidade
+ |-bairro
+ |-logradouro
+ |-numero
+ |-complemento
+ |-cep
+ |-referencia
+
+TiposDeEnderecos
+ |-id(pk)
+ |-descricao
+
+Emails
+ |-id(pk)(idx)
+ |-idPessoa(fk)(idx)
+ |-tipoEmail
+ |-email
+ |-emailPrincipal
+
+TiposDeEmails
+ |-id(pk)
+ |-descricao
+
+Chamados
+ |-id(pk)(idx)
+ |-idPessoa(pk)(fk)(idx)
+
+Manifestos
+ |-id(pk)(idx)
+ |-idChamado(pk)(fk)(idx)
+ |-idProduto(fk)(idx)
+ |-idMarca(fk)(idx)
+ |-idModelo(fk)(idx)
+ |-idManifestacao
+ |-tipoManifesto(fk)(idx)
+ |-dataAbertura(idx)
+ |-dataPrevisao(idx)
+ |-dataEncerramento(idx)
+ |-descricao
+ |-status
+ |-conclusao
+ |-idGrauDeSatisfacao
+ |-resultado
+
+Produtos
+ |-id(pk)
+ |-descricao
+
+Marcas
+ |-id(pk)
+ |-descricao
+
+Modelos
+ |-id
+ |-descricao
+ 
+Manifestacao
+ |-id
+ |-descricao
+
+TiposdeManifestos
+ |-id(pk)
+ |-idSLA
+ |-descricao
+ |-diasOuHorasPrevisao
+ |-procedimento
+ |-orientacao
+
+SLA
+ |-id
+ |-descricao
+ |-diasOuHorasPrazo
+
+GrausDeSatisfacao
+ |-id(pk)
+ |-descricao
+
+Resultados
+ |-id(pk)
+ |-descricao
+
+Destinatarios
+ |-id(pk)
+ |-idManifesto(fk)(idx)
+ |-idArea(fk)(idx)
+ |-idFuncionarioResponsavel(fk)(idx)
+ |-destinatarioPrincipal
+
+Areas
+ |-id(pk)
+ |-descricao
+
+Funcionarios
+ |-id(pk)
+ |-email(idx)
+ |-senha
+ |-nomeCompleto(idx)
+ |-cargo
+
+AreasFuncionarios
+ |-idArea(pk)(idx)
+ |-idFuncionario(fk)(idx)
+
+Follow-Ups
+ |-id(pk)
+ |-idManifesto(fk)(idx)
+ |-idEvento(fk)(idx)
+ |-idArea(fk)(idx)
+ |-idFuncionarioResponsavel(fk)(idx)
+ |-descricao
+ |-resposta
+ |-dataAbertura(idx)
+ |-dataPrevisao(idx)
+ |-dataEncerramento(idx)
+
+Eventos
+ |-id(pk)
+ |-descricao
