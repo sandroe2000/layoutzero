@@ -1,5 +1,5 @@
 let lzInicial = {
-    init: () => {
+    init: () => {        
         //debugger;
         let json = null;       
         fetch(lzInicial.mockScripts.perfil)
@@ -194,7 +194,8 @@ let lzInicial = {
         perfil: 'http://localhost:3000/perfil',
         paises: 'http://localhost:3000/paises',
         pageCustomer: 'http://localhost:3000/customer',
-        customers: 'http://localhost:3000/customers/'
+        customers: 'http://localhost:3000/customers/',
+        login: 'http://localhost:3000/funcionarios/'
     },
     modules: {
         lzModal: "assets/module/pages/lzModal"
