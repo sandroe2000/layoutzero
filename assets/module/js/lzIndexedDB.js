@@ -1,52 +1,80 @@
-let lzDB;
-let objectStore;
+let dbName ='lzDB';
+let connection = new JsStore.Instance(new Worker('assets/components/jsstore/dist/jsstore.worker.js'));
 let lzIndexedDB = {
     init: () => {
-        
-        let lzDBOpenRequest = window.indexedDB.open("lzDB", 4);
-
-        lzDBOpenRequest.onerror = (event) => {
-            console.log('Error loading database.');
-        };
-
-        lzDBOpenRequest.onsuccess = (event) => {
-            lzDB = event.target.result;
-        };
-
-        lzDBOpenRequest.onupgradeneeded = (event) => {
-
-            if(!lzDB){
-                lzDB = event.target.result;
-            };
-
-            objectStore = lzDB.createObjectStore("funcionarios", { keyPath: "id" });
-            objectStore.createIndex("email", "email", { unique: true });
-
-            objectStore = lzDB.createObjectStore("areas", { keyPath: "id" });
-            objectStore.createIndex("descricao", "descricao", { unique: false });
-
-            objectStore = lzDB.createObjectStore("areasFuncionarios", { keyPath: "idArea" });
-            objectStore.createIndex("idFuncionario", "idFuncionario", { unique: true });
-
-            objectStore = lzDB.createObjectStore("cargos", { keyPath: "id" });
-            objectStore.createIndex("descricao", "descricao", { unique: false });
-        };
+        connection.isDbExist(dbName).then((isExist) => {
+            if (isExist) {
+                connection.openDb(dbName);
+            } else {
+                let database = lzIndexedDB.getDbSchema();
+                connection.createDb(database);
+            }
+        }).catch((err) => {
+            console.error(err);
+        });
     },
-    add: (table, newItem) => {
+    get: (table, col, val) => {
+        connection.select({
+            from: table,
+            where: {
+                [col]: val
+            }
+        }).then((results) => {
+            // results will be array of objects
+            console.log(results.length + 'record found');
+        }).catch((err) => {
+            console.log(err);
+        });
+    },
+    add: (table, value) => {
+        connection.insert({
+            into: table,
+            values: [value]
+        }).then((rowsInserted) => {
+            if (rowsInserted > 0) {
+                console.log('successfully added');
+            }
+        }).catch((err) => {
+            console.log(err);
+        });
+    },
+    update: (table, col, objJson) => {
+        connection.update({ 
+            in: table,
+            where: {
+                [col]: {
+                    like: '%'+val+'%'
+                }
+            },
+            set: objJson
+        }).then((rowsUpdated) => {
+            console.log(rowsUpdated + ' rows updated');
+        }).catch((err) => {
+            console.log(err);
+        });
+    },
+    getDbSchema: () => {
 
-        let transaction = lzDB.transaction([table], "readwrite");        
-            
-        transaction.oncomplete = () => {
-            console.log('Transaction completed: database modification finished.');
+        const tbAuth = {
+            name: "auth",
+            columns: [
+                { 
+                    name: 'login',
+                    dataType: 'string'
+                },
+                { 
+                    name: 'Authorization',
+                    dataType: 'string'
+                }
+            ]
         };
 
-        let objectStore = transaction.objectStore(table);
-
-        let objectStoreRequest = objectStore.add(newItem[0]);
-
-        objectStoreRequest.onsuccess = (event) => {
-            console.log('newItem added.');
+        let lzDB = {
+            name: dbName,
+            tables: [tbAuth]
         };
-   }
+
+        return lzDB;
+    }
 };
 lzIndexedDB.init();

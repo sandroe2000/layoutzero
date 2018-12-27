@@ -1,4 +1,19 @@
-nav{
+body{
+    font-size: 0.8rem;
+}
+
+.col-w-10{width:10%}
+.col-w-15{width:15%}
+.col-w-16{width:17%}
+.col-w-17{width:18}
+.col-w-18{width:19%}
+.col-w-19{width:15%}
+.col-w-20{width:20%}
+.col-w-30{width:30%}
+.col-w-40{width:40%}
+.col-w-50{width:50%}
+
+nav-left{
     background: #0178bc;
     position: absolute;
     top: 0;

@@ -9,45 +9,36 @@
 	<link rel="stylesheet" href="assets/components/bootstrap/dist/css/bootstrap.css" />
 	<link rel="stylesheet" href="assets/components/font-awesome/css/font-awesome.min.css" />
 	<link rel="stylesheet" href="assets/components/alertifyjs/css/alertify.css" />
-	<link rel="stylesheet" href="assets/components/alertifyjs/css/themes/default.min.css" />
+	<link rel="stylesheet" href="assets/components/alertifyjs/css/themes/semantic.css" />
 	<!-- App CSS -->
-	<link rel="stylesheet" href="assets/module/css/app.css" />
-	<link rel="stylesheet" href="assets/module/css/lzLeftNav.css" />
+	<link rel="stylesheet" href="assets/module/css/lzLogin.css" />
 </head>
 <body>
-	<header>
-		<div class="brand float-left mt-1">LayoutZero</div>
-		<form class="form-inline float-right mr-3" style="margin-top:11px">
-			<input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-			<button class="btn btn-success my-2 my-sm-0" type="submit">Busca</button>
-		</form>
-	</header>
-	<nav>
-		<button type="button" class="btn btn-outline-secondary" data-modal="MODAL" data-html="view/pages/searchCustomer" data-js="view/scripts/searchCustomer">
-			<i class="fa fa-lg fa-search-plus" aria-hidden="true"></i>
-		</button>
-		<button type="button" class="btn btn-outline-secondary" data-html="view/pages/customer" data-js="view/scripts/customer">
-			<i class="fa fa-lg fa-user" aria-hidden="true"></i>
-		</button>
-		<button type="button" class="btn btn-outline-secondary" data-html="view/pages/customerService" data-js="view/scripts/customerService">
-			<i class="fa fa-lg fa-comments-o" aria-hidden="true"></i>
-		</button>
-		<button type="button" class="btn btn-outline-secondary" data-html="view/pages/administration" data-js="view/scripts/administration">
-			<i class="fa fa-lg fa-lock" aria-hidden="true"></i>
-		</button>
-	</nav>
-	<main>
-		<div id="secPrincipal" class="container-fluid"></div>
-	</main>
-	<section id="secModal"></section>
-	<!-- Vendor Javascript-->
-	<script src="assets/components/bootstrap/dist/js/bootstrap-native-v4.min.js"></script>
 
+    <form class="form-signin">
+
+        <div class="text-center mb-4">
+            <h1>LayoutZero</h1>
+        </div>
+
+        <div class="form-group">
+            <label for="login">Login</label>
+            <input type="email" id="login" class="form-control" placeholder="Email address" />
+        </div>
+
+        <div class="form-group">
+            <label for="senha">Password</label>
+            <input type="password" id="senha" class="form-control" placeholder="Password" />
+        </div>
+
+        <button id="btnSend" class="btn btn-lg btn-primary btn-block" type="button">Sign in</button>
+        <p class="mt-5 mb-3 text-muted text-center"><small>Works in latest Firefox and Chrome &copy; 2018-2019</small></p>
+    </form>
+	
+    <!-- Vendor Javascript-->
+    <script src="assets/components/alertifyjs/alertify.js"></script>
 	<!-- App JavaScript -->
-	<script src="assets/module/js/lzInicial.js"></script>
-	<script src="assets/module/js/lzLeftNav.js"></script>
-	<script src="assets/module/js/lzModal.js"></script>
-	<script src="assets/module/js/lzComboBox.js"></script>
-	<script src="assets/module/js/lzDataTable.js"></script>
+    <script src="assets/module/js/lzIndexedDB_.js"></script>
+    <script src="assets/module/js/lzLogin.js"></script>
 </body>
 </html>

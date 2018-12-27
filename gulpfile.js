@@ -1,7 +1,6 @@
 'use strict';
 var gulp      = require('gulp');
 var webserver = require('gulp-webserver');
-var opn       = require('opn');
 
 var sourcePaths = {
   files: [
@@ -15,24 +14,27 @@ var sourcePaths = {
 };
 
 var server = {
-  host: 'localhost',
-  port: '8001'
+  host: 'http://localhost',
+  port: '80',
+  restSource: '/app',
+  restApp: 'http://localhost:8080/app'
 }
 
 gulp.task('webserver', function() {
   gulp.src( './' )
     .pipe(webserver({
       port: server.port,
-      livereload: true
+      livereload: true,
+      open: server.host,
+      proxies: [{
+        source: server.restSource,
+        target: server.restApp
+      }]
     }));
-});
-
-gulp.task('openbrowser', function() {
-  opn( 'http://' + server.host + ':' + server.port );
 });
 
 gulp.task('watch', function(){
   gulp.watch(sourcePaths.files);
 });
 
-gulp.task('default', ['webserver', 'watch', 'openbrowser']);
+gulp.task('default', ['webserver', 'watch']);

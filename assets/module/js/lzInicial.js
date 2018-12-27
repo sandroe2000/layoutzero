@@ -1,30 +1,86 @@
 let lzInicial = {
-    init: () => {        
-        //debugger;
-        let json = null;       
-        fetch(lzInicial.mockScripts.perfil)
-            .then(response => {
-                return response.json();            
-            })
-            .then(body => {
-                lzInicial.perfil = body;
-            })
-            .catch (error => {
-                console.warn(error.message);
-            });
-        
+    init: () => {   
+        alertify.defaults.transition = "slide";
+        alertify.defaults.theme.ok = "btn btn-primary";
+        alertify.defaults.theme.cancel = "btn btn-danger";
+        alertify.defaults.theme.input = "form-control";  
+                
+        window.indexedDB.open(dbName, 2).onsuccess = (event) => {
+            const db = event.target.result;
+            const transaction = db.transaction(["auth"], 'readonly');
+            const authStore = transaction.objectStore("auth");
+            authStore.getAll().onsuccess = (event) => {
+                let results = event.target.result;
+                if(!results.length){
+                    alertify.alert()
+                        .setting({
+                            'title': 'Atenção',
+                            'label': 'Ok',
+                            'message': 'Falha ao executar login!',
+                            'onok': function(){
+                                location.href = 'index.html';
+                            }
+                        })
+                        .show();
+                }
+                let url = lzInicial.host.concat('/users/perfil/')+results[0].login;
+                let header = new Headers();
+                    header.append("Authorization", results[0].Authorization);
+                let params = { method: 'GET',
+                            headers: header,
+                            mode: 'cors',
+                            cache: 'no-cache'};
+
+                fetch(url, params)
+                    .then(response => {
+                        return response.json();            
+                    })
+                    .then(body => {
+                        if(body.status && body.status==500){
+                            alertify
+                                .alert()
+                                .setting({
+                                    'title': 'Atenção',
+                                    'label': 'Ok',
+                                    'message': body.message
+                                })
+                                .show();
+                        }
+                        lzInicial.perfil = body;
+                    });
+            };
+            transaction.oncomplete = () => {
+                db.close();
+            };            
+        };
     },
+    singOut: () => {
+        const request = window.indexedDB.open(dbName, 2);
+        request.onsuccess = (event) => {
+            const db = request.result;
+            const transaction = db.transaction(["auth"], "readwrite");
+            const authStore = transaction.objectStore("auth");
+            authStore.clear();
+            transaction.oncomplete = () => {
+                db.close();
+                location.href = 'index.html';
+            };
+        };
+    },
+    host: 'http://localhost/app/',
     //GRANT_KEYS => VIEW: V, WRITE: W, DELETE: D, ex.: "VWD"
     hasAccess: (destiny, grantKey) => {
         //debugger;
         if(!destiny) return false;
         let retorno = false;
+        let access = lzInicial.perfil.access;
         try {
-            Object.keys(lzInicial.perfil.acesso).forEach(function eachKey(key) { 
-                if(key == destiny.getAttribute('id')){
-                    retorno = lzInicial.perfil.acesso[key].includes(grantKey);
-                }
-            });
+            for(i in access){        
+                if(access[i].descr == destiny.getAttribute('id')){
+                    retorno = access[i].value.includes(grantKey);
+                }                
+            }
+            
         } catch (error) {
             console.warn(error.message);
         }
@@ -33,8 +89,11 @@ let lzInicial = {
     fetchToPage: (destiny, urlHtml, urlJs) => {
         //debugger;
         if(!destiny) return false;
-        if(!lzInicial.hasAccess(destiny, 'V')) return false;
         if(!urlHtml) return false;
+        if(!lzInicial.hasAccess(destiny, 'V')){
+            urlHtml = 'view/pages/accessDenied';
+            urlJs = null;
+        }
         
         fetch(urlHtml.concat('.html'))
             .then(response => { 
@@ -190,18 +249,11 @@ let lzInicial = {
 
 	},
     perfil: {},
-    mockScripts: {
-        perfil: 'http://localhost:3000/perfil',
-        paises: 'http://localhost:3000/paises',
-        pageCustomer: 'http://localhost:3000/customer',
-        customers: 'http://localhost:3000/customers/',
-        login: 'http://localhost:3000/funcionarios/'
-    },
     modules: {
         lzModal: "assets/module/pages/lzModal"
     },
     modulesJs: {
-        lzModal: "assets/module/lzModal"
+        lzModal: "assets/module/js/lzModal"
     },
     pages: {
         billing: "view/pages/billing",
@@ -217,4 +269,9 @@ let lzInicial = {
         cep: "view/scripts/cep"
     }
 };
+
+document.querySelector('#btnSingOut').addEventListener('click', (event) => {
+    lzInicial.singOut();
+});
+
 lzInicial.init();

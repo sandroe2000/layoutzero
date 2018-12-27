@@ -2,10 +2,7 @@
     "perfil": {
         "id": 1,
         "login": "sandroe2000@gmail.com",
-        "senha": "123456",
         "nome": "Sandro C. Espindula",
-        "dataNascimento": "19/05/1973",
-        "genero": "M",
         "acesso": {
             "secPrincipal": "VW",
             "secPayment": "VW",

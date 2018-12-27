@@ -3,15 +3,15 @@
     <div class="row">
         <div class="col-md-6">
             <label>Nome</label>
-            <input type="text" class="form-control form-control-sm" />
+            <input id="name" type="text" class="form-control form-control-sm" />
         </div>
         <div class="col-md-2">
             <label>Telefone</label>
-            <input type="text" class="form-control form-control-sm" />
+            <input id="cellphone" type="text" class="form-control form-control-sm" />
         </div>
         <div class="col-md-2 space-top">
             <label>Código:</label>
-            <select class="form-control form-control-sm">
+            <select class="form-control form-control-sm" disabled>
                 <option value="">Selecione</option>
                 <option value="CHAMADO" selected>Chamado</option>
                 <option value="MATRICULA">Matrícula</option>
@@ -19,43 +19,56 @@
         </div>
         <div class="col-md-2">
             <label>Número</label>
-            <input type="text" class="form-control form-control-sm" />
+            <input type="text" class="form-control form-control-sm"  disabled />
         </div>
     </div>
     <div class="row mt-2">
         <div class="col-md-6">
             <label>E-mail</label>
-            <input type="text" class="form-control form-control-sm" />
+            <input id="email" type="text" class="form-control form-control-sm" />
         </div>
         <div class="col-md-2">
                 <label>Documento</label>
-                <input type="text" class="form-control form-control-sm" />
+                <input id="document" type="text" class="form-control form-control-sm" />
             </div>
         <div class="col-md-2">
             <label>CPF/CNPJ</label>
-            <input type="text" class="form-control form-control-sm" />
+            <input id="cpfCnpj" type="text" class="form-control form-control-sm" />
         </div>
         <div class="col-md-2">
             <label>RG/IE</label>
-            <input type="text" class="form-control form-control-sm" />
+            <input id="rgie" type="text" class="form-control form-control-sm" />
         </div>
     </div>
     <div class="row">
         <div class="col-md-12">
-            <div class="table-wrapper">
-                <table id="ltsIdentificacao" class="table table-condensed nowrap mt-2" style="width: 100%">
+            <div class="table-responsive-sm">
+                <table id="tableSearchCustomer" class="table table-sm mt-2" style="width: 100%">
                     <thead>
                         <tr>
-                            <th data-column="id">Matrícula</th>
-                            <th data-column="nome">Nome/Empresa</th>
-                            <th data-column="CPF">CPF/CNPJ</th>
-                            <th data-column="dataNascimento">Dt. Nascimento</th>
-                            <th data-column="telefone">Telefone</th>
+                            <th class="col-w-10" data-column="corporateId">Matrícula</th>
+                            <th class="col-w-40" data-column="name" data-limit="30">Nome/Empresa</th>
+                            <th class="col-w-17" data-column="cellphone" data-mask="TELEFONE">Telefone</th>
+                            <th class="col-w-16" data-column="cpfCnpj" data-mask="CPF_CNPJ">CPF/CNPJ</th>
+                            <th class="col-w-15" data-column="rgIe">RG/IE</th>
                         </tr>
                     </thead>
                     <tbody></tbody>
                 </table>
             </div>
+        </div>
+        <div class="col-md-12 mt-2">
+            <div class="float-left">
+                <button class="btn btn btn-sm btn-secondary mr-1" data-dismiss="modal">Cancelar</button>
+                <button id="btnModalEnviar" class="btn btn-sm btn-primary mr-1">Enviar</button>
+            </div>
+            <select id="sizeSearchCustomer" class="form-control-sm float-right">
+                    <option value="5" selected>5</option>
+                    <option value="10">10</option>
+            </select>
+            <nav aria-label="Page navigation mt-2 float-right">
+                <ul id="paginationSearchCustomer" class="pagination pagination-sm"></ul>
+            </nav>
         </div>
     </div>
 </div>

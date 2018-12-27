@@ -1,7 +1,12 @@
 let customer = {
     init: () => {
 
-        fetch(lzInicial.mockScripts.pageCustomer)
+        if(!searchCustomer.customers.length){
+            return false;
+        }
+
+        let uri = lzLogin.host.concat(`customers/${searchCustomer.customers[0].id}`);
+        fetch(uri)
             .then(response => {
                 return response.json();            
             })
