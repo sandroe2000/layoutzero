@@ -4,15 +4,12 @@ let searchCustomer = {
         document.querySelector('#btnModalEnviar').addEventListener('click', searchCustomer.search ,false);
         document.querySelector('#sizeSearchCustomer').addEventListener('change', searchCustomer.search ,false);
         document.querySelector('#paginationSearchCustomer').addEventListener('click', searchCustomer.setPage, false);
-        
         //Render Destiny
         document.querySelector('#modalLongTitle').innerHTML = 'Search Customer';
         lzLeftNav.fetchToPage(document.querySelector('nav-left>button>i.fa.fa-lg.fa-user').parentElement);
     },
-    store: (event) => {
-        
-        let id = event.target.parentElement.children[0].textContent;
-        
+    store: (event) => {     
+        let id = event.target.parentElement.children[0].textContent;   
         fetch(lzInicial.mockScripts.customers.concat(id))
         .then(response => {
             return response.json();            
@@ -32,11 +29,9 @@ let searchCustomer = {
         .catch (error => {
             console.warn(error.message);
         });
-        
         event.preventDefault();
     },
     search: (event) => {
-
         let searchParams = {
             name: document.querySelector('#name').value,
             cellphone: document.querySelector('#cellphone').value,
@@ -45,7 +40,6 @@ let searchCustomer = {
             cpfCnpj: document.querySelector('#cpfCnpj').value,
             rgie: document.querySelector('#rgie').value
         };
-        
         if(_.isEmpty(_.compact(Object.values(searchParams)))){
             alertify
                 .alert()
@@ -58,7 +52,6 @@ let searchCustomer = {
                 .show();
             return false;
         }
-        
         window.indexedDB.open(dbName, 2).onsuccess = (event) => {
             const db = event.target.result;
             const transaction = db.transaction(["auth"], 'readonly');
@@ -67,10 +60,10 @@ let searchCustomer = {
                 let results = event.target.result;
                 let url = lzInicial.host.concat('customers/search');
                     url += '?name='.concat(searchParams.name);
-                    url += '&cellphone='.concat(searchParams.cellphone);
+                    url += '&phone='.concat(searchParams.cellphone);
                     url += '&email='.concat(searchParams.email);
                     url += '&document='.concat(searchParams.document);
-                    url += '&cpfCnpj='.concat(searchParams.cpfCnpj);
+                    url += '&cpfcnpj='.concat(searchParams.cpfCnpj);
                     url += '&rgie='.concat(searchParams.rgie);
                     url += '&size='.concat(document.querySelector('#sizeSearchCustomer').value);
                     url += '&page='.concat(searchCustomer.page);
@@ -80,7 +73,6 @@ let searchCustomer = {
                             headers: header,
                             mode: 'cors',
                             cache: 'no-cache'};
-
                 fetch(url, params)
                     .then(response => {
                         return response.json();            

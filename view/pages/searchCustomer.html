@@ -1,5 +1,4 @@
 <div class="container-fluid">
-
     <div class="row">
         <div class="col-md-6">
             <label>Nome</label>
@@ -43,14 +42,14 @@
     <div class="row">
         <div class="col-md-12">
             <div class="table-responsive-sm">
-                <table id="tableSearchCustomer" class="table table-sm mt-2" style="width: 100%">
+                <table id="tableSearchCustomer" class="table table-hover table-sm mt-2" style="width: 100%">
                     <thead>
                         <tr>
                             <th class="col-w-10" data-column="corporateId">Matrícula</th>
                             <th class="col-w-40" data-column="name" data-limit="30">Nome/Empresa</th>
-                            <th class="col-w-17" data-column="cellphone" data-mask="TELEFONE">Telefone</th>
+                            <th class="col-w-17" data-column="phones"data-alias="phones[0].phone" data-mask="TELEFONE">Telefone</th>
                             <th class="col-w-16" data-column="cpfCnpj" data-mask="CPF_CNPJ">CPF/CNPJ</th>
-                            <th class="col-w-15" data-column="rgIe">RG/IE</th>
+                            <th class="col-w-15" data-column="rgIe"data-mask="RG_IE">RG/IE</th>
                         </tr>
                     </thead>
                     <tbody></tbody>

@@ -30,6 +30,7 @@ let lzDataTable = {
             for(let th in theadTr.cells){
                 if (theadTr.cells[th] instanceof HTMLElement){
                     let colName = theadTr.cells[th].getAttribute('data-column'); 
+                    let colAlias = theadTr.cells[th].getAttribute('data-alias');
                     let colMask = theadTr.cells[th].getAttribute('data-mask'); 
                     let colLimit = theadTr.cells[th].getAttribute('data-limit'); 
                     let colOptions = {
@@ -37,8 +38,9 @@ let lzDataTable = {
                         limit: colLimit
                     };    
                     for(let key in keyValue) {
-                        if(colName == key){        
-                            let value = lzDataTable.setMask(keyValue[key], colOptions);
+                        if(colName == key){  
+                            if(colAlias) colName = colAlias;
+                            let value = lzDataTable.setMask(keyValue[colName], colOptions);
                             let txt = document.createTextNode(lzDataTable.setLimit(colOptions, value));
                             let td = document.createElement('td');
                                 td.setAttribute('title', value);
@@ -116,6 +118,9 @@ let lzDataTable = {
                 case 'CPF_CNPJ': //184.840.038-17
                     if(str.length>11) mask = '00.000.000/000-00';
                     if(str.length<=11) mask = '000.000.000-00';
+                    break;
+                case 'RG_IE': //20.330.138-8
+                    mask = '00.000.000-0';
                     break;
             }
 
