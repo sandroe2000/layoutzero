@@ -4,6 +4,8 @@ let lzInicial = {
         alertify.defaults.theme.ok = "btn btn-primary";
         alertify.defaults.theme.cancel = "btn btn-danger";
         alertify.defaults.theme.input = "form-control";  
+
+        alertify.set('notifier','position', 'top-right');
                 
         window.indexedDB.open(dbName, 2).onsuccess = (event) => {
             const db = event.target.result;
@@ -11,6 +13,10 @@ let lzInicial = {
             const authStore = transaction.objectStore("auth");
             authStore.getAll().onsuccess = (event) => {
                 let results = event.target.result;
+                lzInicial.headers = {
+                    "Authorization": results[0].Authorization,
+                    "Content-Type": "application/json"
+                };
                 if(!results.length){
                     alertify.alert()
                         .setting({
@@ -24,14 +30,11 @@ let lzInicial = {
                         .show();
                 }
                 let url = lzInicial.host.concat('/users/perfil/')+results[0].login;
-                let header = new Headers();
-                    header.append("Authorization", results[0].Authorization);
-                let params = { method: 'GET',
-                            headers: header,
+                fetch(url, { method: 'GET',
+                            headers: lzInicial.headers,
                             mode: 'cors',
-                            cache: 'no-cache'};
-
-                fetch(url, params)
+                            cache: 'no-cache'
+                    })
                     .then(response => {
                         return response.json();            
                     })
@@ -54,6 +57,7 @@ let lzInicial = {
             };            
         };
     },
+    headers: {},
     singOut: () => {
         const request = window.indexedDB.open(dbName, 2);
         request.onsuccess = (event) => {
@@ -67,16 +71,23 @@ let lzInicial = {
             };
         };
     },
-    host: 'http://localhost/app/',
+    host: 'http://localhost/app',
     //GRANT_KEYS => VIEW: V, WRITE: W, DELETE: D, ex.: "VWD"
     hasAccess: (destiny, grantKey) => {
         //debugger;
         if(!destiny) return false;
         let retorno = false;
         let access = lzInicial.perfil.access;
+        let destinyId;
+        if(destiny instanceof Element){
+            destinyId = destiny.getAttribute('id');
+        }else{
+            destinyId = destiny;
+        }
+
         try {
             for(i in access){        
-                if(access[i].descr == destiny.getAttribute('id')){
+                if(access[i].descr == destinyId ){
                     retorno = access[i].value.includes(grantKey);
                 }                
             }
@@ -177,7 +188,7 @@ let lzInicial = {
                 console.warn(error.message);
             });
     },
-    populate: function( form, data, basename) {
+    populate: function(form, data, basename) {
 
 		for(var key in data) {
 
@@ -222,10 +233,14 @@ let lzInicial = {
 					break;
 
 				case 'radio':
-				case 'checkbox':
-					for( var j=0; j < element.length; j++ ) {
-						element[j].checked = ( value.indexOf(element[j].value) > -1 );
-					}
+                case 'checkbox':
+                    if(element.length){
+                        for( var j=0; j < element.length; j++ ) {
+                            element[j].checked = ( value.indexOf(element[j].value) > -1 );
+                        }
+                    }else{
+                        element.checked = ( value.indexOf(element.value) > -1 );
+                    }
 					break;
 
 				case 'select-multiple':

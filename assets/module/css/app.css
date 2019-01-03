@@ -42,15 +42,32 @@ body {
     width: 50%
 }
 
+.col-w-60 {
+    width: 60%
+}
+
+.col-w-70 {
+    width: 70%
+}
+
+.col-w-80 {
+    width: 80%
+}
+
+.col-w-90 {
+    width: 90%
+}
+
 nav-left {
     background: #0178bc;
+    /*background: #000;*/
     position: absolute;
-    top: 0;
+    top: 0px;
     bottom: 0;
     left: 0;
-    width: 60px;
-    padding-top: 60px;
-    padding-left: 7px;
+    width: 50px;
+    padding-top: 50px;
+    padding-left: 6px;
 }
 
 header {
@@ -58,22 +75,24 @@ header {
     background: -moz-linear-gradient(left, #0178bc 0%, #00bdda 100%);
     background: -webkit-linear-gradient(left, #0178bc 0%, #00bdda 100%);
     background: linear-gradient(to right, #0178bc 0%, #00bdda 100%);
+    /*background: #000;*/
     position: absolute;
     top: 0;
-    left: 60px;
+    left: 50px;
     right: 0;
-    height: 60px;
+    height: 50px;
+    padding-left: 5px;
 }
 
 main {
-    background: #f2f2f2;
+    /*background: #f2f2f2;*/
     position: absolute;
-    top: 60px;
+    top: 50px;
     bottom: 0;
-    left: 60px;
+    left: 50px;
     right: 0;
     overflow-y: scroll;
-    padding: 7px;
+    padding: 7px 3px 7px 3px;
 }
 
 .brand {
@@ -235,11 +254,14 @@ scrollbar[orient="vertical"] {
     background-color: #dee2e6;
     border-radius: 1rem;
 }
-
 .card-deck .card {
     margin-bottom: 4px;
 }
-
+@media (max-width: 576px) {
+    #frmSearchHome{
+        display: none;
+    }
+}
 @media (min-width: 576px) {
     .card-deck {
         -ms-flex-flow: row wrap;
@@ -247,7 +269,6 @@ scrollbar[orient="vertical"] {
         margin-right: -4px;
         margin-left: -4px;
     }
-
     .card-deck .card {
         display: -ms-flexbox;
         display: flex;
@@ -260,74 +281,60 @@ scrollbar[orient="vertical"] {
         margin-left: 4px;
     }
 }
-
 .card-group>.card {
     margin-bottom: 4px;
 }
-
-
 label {
     margin-bottom: 0px;
 }
-
-.btn-outline-input {
-    color: #6c757d;
-    background-color: transparent;
-    background-image: none;
-    border-color: #c6cace;
-}
-
-.btn-outline-input:hover {
-    color: #fff;
-    background-color: #c6cace;
-    border-color: #c6cace;
-}
-
-.btn-outline-input:focus,
-.btn-outline-input.focus {
-    box-shadow: 0 0 0 0.2rem rgba(200, 204, 209, 0.5);
-}
-
-.btn-outline-input.disabled,
-.btn-outline-input:disabled {
-    color: #c6cace;
-    background-color: transparent;
-}
-
-.btn-outline-input:not(:disabled):not(.disabled):active,
-.btn-outline-input:not(:disabled):not(.disabled).active,
-.show>.btn-outline-input.dropdown-toggle {
-    color: #fff;
-    background-color: #c6cace;
-    border-color: #c6cace;
-}
-
-.btn-outline-input:not(:disabled):not(.disabled):active:focus,
-.btn-outline-input:not(:disabled):not(.disabled).active:focus,
-.show>.btn-outline-input.dropdown-toggle:focus {
-    box-shadow: 0 0 0 0.2rem rgba(200, 204, 209, 0.5);
-}
-
 select {
     font-family: fontAwesome, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"
 }
-
 fieldset {
+    position: relative;
     width: 100%;
-    padding-right: 4px;
-    padding-left: 4px;
-    padding-bottom: 4px;
     margin-right: auto;
     margin-left: auto;
-    border-top: 1px solid #dee2e6;
+    border: 1px solid #CED4DA;
+    background-color: #fff;
+    margin-bottom: 10px;
+    border-radius: 4px 0 0 0;
 }
 legend {
+    position: absolute;
+    top: -1px;
+    left: -1px;
     width: auto;
     max-width: auto;
-    padding-right: 4px;
-    font-size: 1.2rem;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    font-size: 1rem;
+    border: 1px solid #CED4DA;
+    /*border-left: 1px solid #CED4DA;*/
+    background-color: #fff;
+    border-radius: 4px 0 4px 0;
 }
-
+fieldset > .container-fluid {
+    width: 100%;
+    padding-right: 10px;
+    padding-left: 10px;
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: 35px;
+    margin-bottom: 10px;
+}
 .p-default {
     min-width: 80px;
+}
+.input-group .input-group-append .btn-light {
+    border: 1px solid #CED4DA;
+}
+.bg-write {
+    background-color: #fff;
+    border: 1px solid #CED4DA;
+    padding: 0.3rem 0.3rem;
+    margin-left: 4px;
+    margin-right: 4px;
 }

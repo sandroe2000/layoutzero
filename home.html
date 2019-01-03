@@ -2,7 +2,7 @@
 <html lang="pt-br">
 <head>
 	<!-- Required meta tags -->
-	<meta charset="utf-8" />
+	<meta charset="UTF-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 	<title>LayoutZero</title>
 	<!-- VENDOR CSS -->
@@ -18,29 +18,48 @@
 </head>
 <body>
 	<header>
-		<div class="brand float-left mt-1">LayoutZero</div>
-		<form class="form-inline float-left ml-5" style="margin-top:11px">
-			<input id="mainSearch" class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-			<button id="btnMainSearch" class="btn btn-success my-2 my-sm-0" type="button">Busca</button>
-			
+		<div class="brand float-left">LayoutZero</div>
+		<form id="frmSearchHome" class="form-inline float-left ml-5" style="margin-top:10px">
+			<!--input id="mainSearch" class="form-control form-control-sm" type="search" placeholder="Search" aria-label="Search">
+			<button id="btnMainSearch" class="btn btn-sm btn-success" type="button">Busca</button-->
+			<div class="input-group">
+				<input id="mainSearch" class="form-control form-control-sm" type="search" placeholder="Search" aria-label="Search">
+				<div class="input-group-append">
+					<button id="btnMainSearch" class="btn btn-sm btn-success" type="button">Busca</button>
+				</div>
+			</div>	
 		</form>
-		<div class="float-right mr-2" style="margin-top:11px">
-			<button id="btnSingOut" class="btn btn-default ml-4 my-2 my-sm-0" type="button">
+		<div class="float-right mr-3" style="margin-top:6px">
+			<button id="btnSingOut" class="btn btn-outline-secondary" type="button">
 				<i class="fa fa-lg fa-sign-out" aria-hidden="true"></i>
 			</button>
 		</div>
 	</header>
 	<nav-left>
-		<button type="button" class="btn btn-outline-secondary" data-modal="MODAL" data-html="view/pages/searchCustomer" data-js="view/scripts/searchCustomer">
+		<button type="button" 
+				class="btn btn-outline-secondary" 
+				data-modal="MODAL" 
+				data-html="view/pages/searchCustomer" 
+				data-js="view/scripts/searchCustomer" 
+				data-title="Search Customer">
 			<i class="fa fa-lg fa-search-plus" aria-hidden="true"></i>
 		</button>
-		<button type="button" class="btn btn-outline-secondary" data-html="view/pages/customer" data-js="view/scripts/customer">
+		<button type="button" 
+				class="btn btn-outline-secondary" 
+				data-html="view/pages/customer" 
+				data-js="view/scripts/customer">
 			<i class="fa fa-lg fa-user" aria-hidden="true"></i>
 		</button>
-		<button type="button" class="btn btn-outline-secondary" data-html="view/pages/customerService" data-js="view/scripts/customerService">
+		<button type="button" 
+				class="btn btn-outline-secondary" 
+				data-html="view/pages/customerService" 
+				data-js="view/scripts/customerService">
 			<i class="fa fa-lg fa-comments-o" aria-hidden="true"></i>
 		</button>
-		<button type="button" class="btn btn-outline-secondary" data-html="view/pages/administration" data-js="view/scripts/administration">
+		<button type="button" 
+				class="btn btn-outline-secondary" 
+				data-html="view/pages/administration" 
+				data-js="view/scripts/administration">
 			<i class="fa fa-lg fa-lock" aria-hidden="true"></i>
 		</button>
 	</nav-left>
@@ -49,10 +68,13 @@
 	</main>
 	<section id="secModal"></section>
 	<!-- Vendor Javascript-->
-	<script src="assets/components/bootstrap/dist/js/bootstrap-native-v4.min.js"></script>
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
 	<script src="assets/components/alertifyjs/alertify.js"></script>
 	<script src="assets/components/Inputmask/string-mask.js"></script>
 	<script src="assets/components/lodash/lodash.min.js"></script>
+	<script src="assets/components/utils/date.js"></script>
 
 	<!-- App JavaScript -->
 	<script src="assets/module/js/lzIndexedDB.js"></script>

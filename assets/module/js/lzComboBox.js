@@ -10,16 +10,16 @@ let lzComboBox = {
         }
     },
     __setUrlToComboBox: (select, urlOrData, selConf) => {
-        fetch(urlOrData)
-            .then(response => { 
-                return response.text();
-            })
-            .then(data => { 
-                lzComboBox.__setObjToComboBox(select, data, selConf);
-            })
-            .catch (error => {
-                console.warn(error.message);
-            });
+        fetch(urlOrData, { 
+            method: 'GET',
+            headers: lzInicial.headers
+        }).then(response => { 
+            return response.text();
+        }).then(data => { 
+            lzComboBox.__setObjToComboBox(select, data, selConf);
+        }).catch (error => {
+            console.warn(error.message);
+        });
     },
     __setObjToComboBox: (select, json, selConf) => {
         let combo = document.querySelector(select);
@@ -32,9 +32,9 @@ let lzComboBox = {
         });
         let option = document.createElement('option');
             option.value = "";
-            option.text = "Choose...";
+            option.text = "Selecione";
         combo.appendChild(option);
-        json.forEach(item => {
+        JSON.parse(json).forEach(item => {
             let option = document.createElement('option');
             option.value = item[selConf.val];
             option.text = item[selConf.text];

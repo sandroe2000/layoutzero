@@ -10,7 +10,7 @@ let lzLeftNav = {
         if(!_obj) return false;     
         lzLeftNav.__setNavStyle(_obj);    
         if(_obj.getAttribute('data-modal')){
-            lzModal.fetchToPage(document.querySelector('#secModal'), _obj.getAttribute('data-html'), _obj.getAttribute('data-js'));
+            lzModal.fetchToPage(document.querySelector('#secModal'), _obj.getAttribute('data-html'), _obj.getAttribute('data-js'), _obj.getAttribute('data-title'));
         }else{       
             lzInicial.fetchToPage(document.querySelector('main div.container-fluid'), _obj.getAttribute('data-html'), _obj.getAttribute('data-js'));
         }

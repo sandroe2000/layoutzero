@@ -1,148 +1,168 @@
 <form id="frmCustomer">
-    <fieldset>
-        <legend>Dados Pessoais</legend>
-        <div class="row">
-            <div class="col-md-2">
-                <label for="customerTipoDePublico">Tipo de publico</label>
-                <select class="form-control form-control-sm" id="customerTipoDePublico">
-                    <option value="">Selecione</option>
-                </select>
-            </div>           
-            <div class="col-md-2">
-                <label for="customerMatricula">Matricula</label>
-                <input class="form-control form-control-sm" type="text" id="customerMatricula">
-            </div>
-            <div class="col-md-2">
-                <label for="customerCodigoCorporativo">Cód. Corporativo</label>
-                <input class="form-control form-control-sm" type="text" id="customerCodigoCorporativo">
-            </div>
-            <div class="col-md-2">
-                <label for="customerPessoaFisicaJuridica">Pessoa</label>
-                <select class="form-control form-control-sm" id="customerPessoaFisicaJuridica">
-                    <option value="">Selecione</option>
-                    <option value="FISICA" selected>Física</option>
-                    <option value="JURIDICA">Jurídica</option>
-                </select>
-            </div>
-            <div class="col-md-1">
-                <label for="customerPessoaFisicaJuridica">Sexo</label>
-                <select class="form-control form-control-sm" id="customerPessoaFisicaJuridica">
-                    <option value="">Selecione</option>
-                    <option value="F">F</option>
-                    <option value="M" selected>M</option>
-                </select>
-            </div>
-            <div class="col-md-3">
-                <label>Não contactar</label>
-                <div style="margin-top: -2px !important;">
-                        <div class="pretty p-default">
-                        <input type="checkbox" id="customerNaoContactarWhatsApp">
-                        <div class="state p-danger">
-                            <label for="customerNaoContactarWhatsApp">WhatsApp</label>
+    <div class="row">
+        <div class="col-md-12">
+            <fieldset>
+                <legend>Dados Pessoais</legend>
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-md-2">
+                            <label for="customerTipoDePublico">Tipo de publico</label>
+                            <select class="form-control form-control-sm" id="customerTipoDePublico">
+                                <option value="">Selecione</option> 
+                            </select>
+                        </div>           
+                        <div class="col-md-2">
+                            <label for="customerMatricula">Matricula</label>
+                            <input class="form-control form-control-sm" type="text" id="customerMatricula">
+                        </div>
+                        <div class="col-md-2">
+                            <label for="customerCodigoCorporativo">Cód. Corporativo</label>
+                            <input class="form-control form-control-sm" type="text" id="customerCodigoCorporativo">
+                        </div>
+                        <div class="col-md-2">
+                            <label for="customerPessoaFisicaJuridica">Pessoa</label>
+                            <select class="form-control form-control-sm" id="customerPessoaFisicaJuridica">
+                                <option value="">Selecione</option>
+                                <option value="FISICA" selected>Física</option>
+                                <option value="JURIDICA">Jurídica</option>
+                            </select>
+                        </div>
+                        <div class="col-md-1">
+                            <label for="customerPessoaFisicaJuridica">Sexo</label>
+                            <select class="form-control form-control-sm" id="customerPessoaFisicaJuridica">
+                                <option value="">Selecione</option>
+                                <option value="F">F</option>
+                                <option value="M" selected>M</option>
+                            </select>
+                        </div>
+                        <div class="col-md-3">
+                            <label>Não contactar</label>
+                            <div style="margin-top: -2px !important;">
+                                    <div class="pretty p-default">
+                                    <input type="checkbox" id="customerNaoContactarWhatsApp">
+                                    <div class="state p-danger">
+                                        <label for="customerNaoContactarWhatsApp">WhatsApp</label>
+                                    </div>
+                                </div>
+                                <div class="pretty p-default">
+                                    <input type="checkbox" id="customerNaoContactarTelefone" checked>
+                                    <div class="state p-danger">
+                                        <label for="customerNaoContactarTelefone">Telefone</label>
+                                    </div>
+                                </div>
+                                <div class="pretty p-default">
+                                    <input type="checkbox" id="customerNaoContactarEmail">
+                                    <div class="state p-danger">
+                                        <label for="customerNaoContactarEmail">Email</label>
+                                    </div>
+                                </div>  
+                                <div class="pretty p-default">
+                                    <input type="checkbox" id="customerNaoContactarSms">
+                                    <div class="state p-danger">
+                                        <label for="customerNaoContactarSms">SMS</label>
+                                    </div>
+                                </div>          
+                            </div>
+                        </div>        
+                    </div>
+                    <div class="row"> 
+                        <div class="col-md-2">
+                            <label for="customerFormaDeTratamento">Forma de Tratamento</label>
+                            <select class="form-control form-control-sm" id="customerFormaDeTratamento">
+                                <option value="">Selecione</option>
+                            </select>
+                        </div>      
+                        <div class="col-md-4">
+                            <label for="customerNome">Nome</label>
+                            <input class="form-control form-control-sm" type="text" id="customerNome">
+                        </div>
+                        <div class="col-md-3">
+                            <label for="customerTelefone">Telefone</label>
+                            <div class="input-group">
+                                <select class="form-control form-control-sm" id="customerTelefone">
+                                    <option value="">Selecione</option>
+                                    <option value="21888889999">&#xf015; (21)99999-9999</option>
+                                    <option value="21888889999">&#xf275; (21)88888-9999</option>
+                                    <option value="21888889999" selected>&#xf232; (21)88888-9999</option>
+                                </select>
+                                <div class="input-group-append">
+                                    <button class="btn btn-light btn-sm" type="button">
+                                        <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                                <label for="customerEmail">Email</label>
+                                <div class="input-group">
+                                    <select class="form-control form-control-sm" id="customerEmail">
+                                        <option value="">Selecione</option>
+                                        <option value="" selected>sandroe2000@gmail.com</option>
+                                        <option value="">sandroespindula@plusoft.com.br</option>
+                                    </select>
+                                    <div class="input-group-append">
+                                        <button class="btn btn-light btn-sm" type="button">
+                                            <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                                        </button>
+                                    </div>
+                                </div>
                         </div>
                     </div>
-                    <div class="pretty p-default">
-                        <input type="checkbox" id="customerNaoContactarTelefone" checked>
-                        <div class="state p-danger">
-                            <label for="customerNaoContactarTelefone">Telefone</label>
-                        </div>
-                    </div>
-                    <div class="pretty p-default">
-                        <input type="checkbox" id="customerNaoContactarEmail">
-                        <div class="state p-danger">
-                            <label for="customerNaoContactarEmail">Email</label>
-                        </div>
-                    </div>  
-                    <div class="pretty p-default">
-                        <input type="checkbox" id="customerNaoContactarSms">
-                        <div class="state p-danger">
-                            <label for="customerNaoContactarSms">SMS</label>
-                        </div>
-                    </div>          
                 </div>
-            </div>        
+            </fieldset>
         </div>
-        <div class="row"> 
-            <div class="col-md-2">
-                <label for="customerFormaDeTratamento">Forma de Tratamento</label>
-                <select class="form-control form-control-sm" id="customerFormaDeTratamento">
-                    <option value="">Selecione</option>
-                </select>
-            </div>      
-            <div class="col-md-4">
-                <label for="customerNome">Nome</label>
-                <input class="form-control form-control-sm" type="text" id="customerNome">
-            </div>
-            <div class="col-md-3">
-                <label for="customerTelefone">Telefone</label>
-                <div class="input-group">
-                    <select class="form-control form-control-sm" id="customerTelefone">
-                        <option value="">Selecione</option>
-                        <option value="21888889999">&#xf015; (21)99999-9999</option>
-                        <option value="21888889999">&#xf275; (21)88888-9999</option>
-                        <option value="21888889999" selected>&#xf232; (21)88888-9999</option>
-                    </select>
-                    <div class="input-group-append">
-                        <button class="btn btn-outline-input btn-sm" type="button">
-                            <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
-                        </button>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-3">
-                    <label for="customerEmail">Email</label>
-                    <div class="input-group">
-                        <select class="form-control form-control-sm" id="customerEmail">
-                            <option value="">Selecione</option>
-                            <option value="" selected>sandroe2000@gmail.com</option>
-                            <option value="">sandroespindula@plusoft.com.br</option>
-                        </select>
-                        <div class="input-group-append">
-                            <button class="btn btn-outline-input btn-sm" type="button">
-                                <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
-                            </button>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <fieldset>
+                <legend>Endereço</legend>
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="table-responsive-sm">
+                                <table id="tableCustomerAddress" class="table table-hover table-sm" style="width: 100%">
+                                    <thead>
+                                        <tr>
+                                            <th class="col-w-35" data-column="endereco" data-limit="30">Endereço</th>
+                                            <th class="col-w-10" data-column="numero">Número</th>
+                                            <th class="col-w-15" data-column="bairro">Bairro</th>
+                                            <th class="col-w-15" data-column="cidade">Cidade</th>
+                                            <th class="col-w-10" data-column="uf">UF</th>
+                                            <th class="col-w-15" data-column="cep" data-mask="CEP">CEP</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody></tbody>
+                                </table>
+                            </div>
                         </div>
                     </div>
-            </div>
-        </div>
-    </fieldset>
-    <fieldset>
-        <legend>Endereço</legend>
-        <div class="row">
-            <div class="col-md-12">
-                <div class="table-responsive-sm">
-                    <table id="tableCustomerAddress" class="table table-hover table-sm" style="width: 100%">
-                        <thead>
-                            <tr>
-                                <th class="col-w-35" data-column="endereco" data-limit="30">Endereço</th>
-                                <th class="col-w-10" data-column="numero">Número</th>
-                                <th class="col-w-15" data-column="bairro">Bairro</th>
-                                <th class="col-w-15" data-column="cidade">Cidade</th>
-                                <th class="col-w-10" data-column="uf">UF</th>
-                                <th class="col-w-15" data-column="cep" data-mask="CEP">CEP</th>
-                            </tr>
-                        </thead>
-                        <tbody></tbody>
-                    </table>
+                    <div class="row">
+                        <div class="col-md-12 mt-2">
+                            <select id="sizeCustomerAddress" class="form-control-sm float-right">
+                                    <option value="5" selected>5</option>
+                                    <option value="10">10</option>
+                            </select>
+                            <nav aria-label="Page navigation mt-2 float-right">
+                                <ul id="paginationCustomerAddress" class="pagination pagination-sm"></ul>
+                            </nav>
+                        </div>
+                    </div>
                 </div>
-            </div>
+            </fieldset>
         </div>
-        <div class="col-md-12 mt-2">
-            <select id="sizeCustomerAddress" class="form-control-sm float-right">
-                    <option value="5" selected>5</option>
-                    <option value="10">10</option>
-            </select>
-            <nav aria-label="Page navigation mt-2 float-right">
-                <ul id="paginationCustomerAddress" class="pagination pagination-sm"></ul>
-            </nav>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <fieldset>
+                <legend>Dados Complementares</legend>
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-md-12">
+                            
+                        </div>
+                    </div>
+                </div>
+            </fieldset>
         </div>
-    </fieldset>
-    <fieldset>
-        <legend>Dados Complementares</legend>
-        <div class="row">
-            <div class="col-md-12">
-                
-            </div>
-        </div>
-    </fieldset>
+    </div>
 </form>

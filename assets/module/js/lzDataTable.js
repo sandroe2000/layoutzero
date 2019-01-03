@@ -33,20 +33,23 @@ let lzDataTable = {
                     let colAlias = theadTr.cells[th].getAttribute('data-alias');
                     let colMask = theadTr.cells[th].getAttribute('data-mask'); 
                     let colLimit = theadTr.cells[th].getAttribute('data-limit'); 
+                    let colIcon = theadTr.cells[th].getAttribute('data-icon');
                     let colOptions = {
                         mask: colMask,
-                        limit: colLimit
-                    };    
-                    for(let key in keyValue) {
-                        if(colName == key){  
-                            if(colAlias) colName = colAlias;
-                            let value = lzDataTable.setMask(keyValue[colName], colOptions);
-                            let txt = document.createTextNode(lzDataTable.setLimit(colOptions, value));
-                            let td = document.createElement('td');
-                                td.setAttribute('title', value);
-                                td.setAttribute('class', 'text-nowrap');
-                            td.appendChild(txt);
-                            tr.appendChild(td);
+                        limit: colLimit,
+                        icons: colIcon,
+                        alias: colAlias
+                    }; 
+                    if(colOptions.icons){
+                        let icons = colOptions.icons.split(',');
+                        lzDataTable.__setTdIcons(icons, tr);
+                    }else{   
+                        for(let key in keyValue) {
+                            if(colName == key){  
+                                if(colOptions.alias) colName = colAlias;                            
+                                let value = lzDataTable.setMask(keyValue[colName], colOptions);
+                                lzDataTable.__setTdValue(colOptions, value, tr);
+                            }
                         }
                     }
                 }
@@ -61,6 +64,38 @@ let lzDataTable = {
                 lzDataTable.setPageBtn(objPagination, options, i);
             }
         }
+    },
+    __setTdIcons:(icons, tr) => {
+        let td = document.createElement('td');            
+        td.setAttribute('class', 'text-nowrap text-right');
+        for(let i=0; i<icons.length; i++){        
+            let iTag = lzDataTable.__getTableIcon(icons[i]);
+            td.appendChild(iTag);
+        }
+        tr.appendChild(td);
+    },
+    __setTdValue: (colOptions, value, tr) => {
+        let txt = document.createTextNode(lzDataTable.setLimit(colOptions, value));
+        let td = document.createElement('td');
+            td.setAttribute('title', value);
+            td.setAttribute('class', 'text-nowrap');
+            td.appendChild(txt);
+            tr.appendChild(td);
+    },
+    __getTableIcon: (icon) => {
+        let fa = 'fa-bug';
+        switch(icon){
+            case '_TRASH':
+                fa = 'fa-trash';
+                break;
+            case '_EDIT':
+                fa = 'fa-pencil-square-o';
+                break;
+        }
+        let i = document.createElement('i');
+            i.setAttribute('class', 'ml-3 fa fa-lg '+fa);
+            i.setAttribute('aria-hidden', true);
+        return i;
     },
     setPageBtn: (objPagination, options, i) => {
         let more = false;

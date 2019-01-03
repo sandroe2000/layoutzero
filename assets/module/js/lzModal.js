@@ -2,7 +2,7 @@ let lzModal = {
     init: () => {
         let modal = document.querySelector('#modalCenter');
     },
-    fetchToPage: (destiny, urlHtml, urlJs) => {
+    fetchToPage: (destiny, urlHtml, urlJs, title) => {
         //debugger;
         if(!destiny) return false;
         if(!lzInicial.hasAccess(destiny, 'V')) return false;
@@ -70,6 +70,9 @@ let lzModal = {
                                 script.src = urlJs.concat('.js');
                                 body.appendChild(script);
                             }
+                            if(title){
+                                document.querySelector('#modalLongTitle').innerHTML = title;
+                            }
                         }
                     })
                     .catch (error => {
@@ -84,17 +87,23 @@ let lzModal = {
             });
     },
     show: () => {
-        let modal = document.querySelector('#modalCenter');
-                let modalInstance = new Modal(modal);
-                modalInstance.show({
-                    backdrop: 'static',
-                    keyboard: false
-                });
+        //let modal = document.querySelector('#modalCenter');
+        //let modalInstance = new Modal(modal);
+        //modalInstance.show({
+        //    backdrop: 'static',
+        //    keyboard: false
+        //});
+        $('#modalCenter').modal({
+            backdrop: 'static',
+            keyboard: false,
+            show: true
+        })
     },
     hide: () => {
-        let modal = document.querySelector('#modalCenter');
-        let modalInstance = new Modal(modal);
-        modalInstance.hide();
+        //let modal = document.querySelector('#modalCenter');
+        //let modalInstance = new Modal(modal);
+        //modalInstance.hide();
+        $('#modalCenter').modal('hide');
     }
 };
 lzModal.init();

@@ -5,7 +5,7 @@ let searchCustomer = {
         document.querySelector('#sizeSearchCustomer').addEventListener('change', searchCustomer.search ,false);
         document.querySelector('#paginationSearchCustomer').addEventListener('click', searchCustomer.setPage, false);
         //Render Destiny
-        document.querySelector('#modalLongTitle').innerHTML = 'Search Customer';
+        //document.querySelector('#modalLongTitle').innerHTML = 'Search Customer';
         lzLeftNav.fetchToPage(document.querySelector('nav-left>button>i.fa.fa-lg.fa-user').parentElement);
     },
     store: (event) => {     
@@ -58,7 +58,7 @@ let searchCustomer = {
             const authStore = transaction.objectStore("auth");
             authStore.getAll().onsuccess = (event) => {
                 let results = event.target.result;
-                let url = lzInicial.host.concat('customers/search');
+                let url = lzInicial.host.concat('/customers/search');
                     url += '?name='.concat(searchParams.name);
                     url += '&phone='.concat(searchParams.cellphone);
                     url += '&email='.concat(searchParams.email);
