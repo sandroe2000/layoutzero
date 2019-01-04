@@ -7,6 +7,10 @@ let searchCustomer = {
         //Render Destiny
         //document.querySelector('#modalLongTitle').innerHTML = 'Search Customer';
         lzLeftNav.fetchToPage(document.querySelector('nav-left>button>i.fa.fa-lg.fa-user').parentElement);
+
+        document.querySelectorAll('thead tr th').forEach(th => {
+            th.addEventListener('click', searchCustomer.setSort, false);
+        });
     },
     store: (event) => {     
         let id = event.target.parentElement.children[0].textContent;   
@@ -52,52 +56,32 @@ let searchCustomer = {
                 .show();
             return false;
         }
-        window.indexedDB.open(dbName, 2).onsuccess = (event) => {
-            const db = event.target.result;
-            const transaction = db.transaction(["auth"], 'readonly');
-            const authStore = transaction.objectStore("auth");
-            authStore.getAll().onsuccess = (event) => {
-                let results = event.target.result;
-                let url = lzInicial.host.concat('/customers/search');
-                    url += '?name='.concat(searchParams.name);
-                    url += '&phone='.concat(searchParams.cellphone);
-                    url += '&email='.concat(searchParams.email);
-                    url += '&document='.concat(searchParams.document);
-                    url += '&cpfcnpj='.concat(searchParams.cpfCnpj);
-                    url += '&rgie='.concat(searchParams.rgie);
-                    url += '&size='.concat(document.querySelector('#sizeSearchCustomer').value);
-                    url += '&page='.concat(searchCustomer.page);
-                let header = new Headers();
-                    header.append("Authorization", results[0].Authorization);
-                let params = { method: 'GET',
-                            headers: header,
-                            mode: 'cors',
-                            cache: 'no-cache'};
-                fetch(url, params)
-                    .then(response => {
-                        return response.json();            
-                    })
-                    .then(body => {
-                        return searchCustomer.customers = body;
-                    })
-                    .then(data => {
-                        //debugger;
-                        let options = {
-                            data: data, 
-                            page: searchCustomer.page, 
-                            tabId: '#tableSearchCustomer', 
-                            pageId: '#paginationSearchCustomer'
-                        };
-                        lzDataTable.setTable(options);
-                    })
-                    .catch (error => {
-                        console.warn(error.message);
-                    });
+        let url = lzInicial.host.concat('/customers/search');
+        url += '?name='.concat(searchParams.name);
+        url += '&phone='.concat(searchParams.cellphone);
+        url += '&email='.concat(searchParams.email);
+        url += '&document='.concat(searchParams.document);
+        url += '&cpfcnpj='.concat(searchParams.cpfCnpj);
+        url += '&rgie='.concat(searchParams.rgie);
+        url += '&size='.concat(document.querySelector('#sizeSearchCustomer').value);
+        url += '&page='.concat(searchCustomer.page);
+        url += '&sort='.concat(searchCustomer.sortDirection);
+        fetch(url, { 
+            method: 'GET',
+            headers: lzInicial.headers
+        }).then(response => {
+            return response.json();            
+        }).then(body => {
+            return searchCustomer.customers = body;
+        }).then(data => {
+            let options = {
+                data: data, 
+                page: searchCustomer.page, 
+                tabId: '#tableSearchCustomer', 
+                pageId: '#paginationSearchCustomer'
             };
-            transaction.oncomplete = () => {
-                db.close();
-            };            
-        };
+            lzDataTable.setTable(options);
+        });
     },
     setPage: (event) => {
         if(event.target.nodeName=='UL'){
@@ -107,6 +91,31 @@ let searchCustomer = {
         searchCustomer.search();
     },
     page: 0,
-    customers: [] 
+    sortDirection: "CORPORATE_ID,ASC",
+    customers: [],
+    setSort: (event) => {
+        let th = event.target.closest('th');
+        let thDataColumn = th.getAttribute('data-column');
+        if(thDataColumn=='phones'){
+            thDataColumn = 'phone';
+        }
+        let sortFieldName = _.snakeCase(thDataColumn);
+        let sortDirection;
+        if(th.firstElementChild.classList.contains('fa-sort')){
+            sortDirection = "asc";
+            th.firstElementChild.classList.remove('fa-sort');
+            th.firstElementChild.classList.add('fa-sort-asc');
+        }else if(th.firstElementChild.classList.contains('fa-sort-desc')){
+            sortDirection = "asc";
+            th.firstElementChild.classList.remove('fa-sort-desc');
+            th.firstElementChild.classList.add('fa-sort-asc');
+        }else if(th.firstElementChild.classList.contains('fa-sort-asc')){
+            sortDirection = "desc";
+            th.firstElementChild.classList.remove('fa-sort-asc');
+            th.firstElementChild.classList.add('fa-sort-desc');
+        }
+        searchCustomer.sortDirection = sortFieldName+","+sortDirection;
+        searchCustomer.search();
+    } 
 };
 searchCustomer.init();

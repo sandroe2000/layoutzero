@@ -3,7 +3,7 @@ body {
 }
 
 .col-w-10 {
-    width: 10%
+    width: 10%;
 }
 
 .col-w-15 {
@@ -337,4 +337,14 @@ fieldset > .container-fluid {
     padding: 0.3rem 0.3rem;
     margin-left: 4px;
     margin-right: 4px;
+}
+
+th, 
+td {
+    white-space: nowrap;
+    cursor: default;
+}
+.table thead tr th:hover {
+    background-color: #f1f1f1 !important;
+    cursor: pointer;
 }

@@ -16,6 +16,7 @@
 let lzDataTable = {
     //options = {data, page, tabId, pageId}
     setTable: (options) => {
+
         let table = document.querySelector(options.tabId);
         let theadTr = document.querySelector(options.tabId.concat(' > thead > tr'));
         let tbody =  document.querySelector(options.tabId.concat(' > tbody'));
@@ -46,8 +47,8 @@ let lzDataTable = {
                     }else{   
                         for(let key in keyValue) {
                             if(colName == key){  
-                                if(colOptions.alias) colName = colAlias;                            
-                                let value = lzDataTable.setMask(keyValue[colName], colOptions);
+                                if(colOptions.alias) colName = colAlias;  
+                                let value = lzDataTable.setMask(jsonPath(keyValue, colName)[0] , colOptions);
                                 lzDataTable.__setTdValue(colOptions, value, tr);
                             }
                         }
@@ -137,8 +138,8 @@ let lzDataTable = {
         let mask = colOptions.mask;
 
         //NULL
-        if(str=="null"){
-            return str.replace("null", "- - -");
+        if(!value){
+            return "- - -";
         }
 
         //MASK
