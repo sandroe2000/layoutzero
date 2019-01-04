@@ -96,9 +96,9 @@ let searchCustomer = {
     setSort: (event) => {
         let th = event.target.closest('th');
         let thDataColumn = th.getAttribute('data-column');
-        if(thDataColumn=='phones'){
-            thDataColumn = 'phone';
-        }
+        //if(thDataColumn=='phones'){
+        //    thDataColumn = 'phone';
+        //}
         let sortFieldName = _.snakeCase(thDataColumn);
         let sortDirection;
         if(th.firstElementChild.classList.contains('fa-sort')){
