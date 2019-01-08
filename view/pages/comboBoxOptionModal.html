@@ -1,0 +1,37 @@
+<div class="container-fluid">
+    <form id="formComboBoxOptionModal" name="formComboBoxOptionModal">
+        <div class="row">
+            <div class="col-md-2">
+                <label>#</label>
+                <input id="comboBoxOptionModalId" type="text" class="form-control form-control-sm" disabled />
+                <input type="hidden" id="comboBoxOptionModalComboBoxId" />
+            </div>
+            <div class="col-md-2">
+                <label for="comboBoxOptionModalCorporateId">Cód. Corporativo</label>
+                <input maxlength="60" id="comboBoxOptionModalCorporateId" type="text" class="form-control form-control-sm" />
+            </div>
+            <div class="col-md-6">
+                    <label for="comboBoxOptionModalDescr">Descrição</label>
+                    <input maxlength="60" id="comboBoxOptionModalDescr" type="text" class="form-control form-control-sm" />
+                </div>
+            <div class="col-md-2 space-top">
+                <div style="margin-top: 23px">
+                    <div class="pretty p-default">
+                        <input type="checkbox" id="comboBoxOptionModalDisabled" value="DISABLED" />
+                        <div class="state p-info">
+                            <label for="comboBoxOptionModalDisabled">Inativo</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12 mt-2">
+                <div class="float-left">
+                    <button id="btnComboBoxOptionModalCancelar" class="btn btn btn-sm btn-light mr-1" data-dismiss="modal">Cancelar</button>
+                    <button id="btnComboBoxOptionModalGravar" class="btn btn-sm btn-primary mr-1">Gravar</button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

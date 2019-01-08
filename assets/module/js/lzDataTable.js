@@ -22,9 +22,13 @@ let lzDataTable = {
         let tbody =  document.querySelector(options.tabId.concat(' > tbody'));
         
         //LIMPA TABELA A CADA PESQUISA
-        document.querySelectorAll(options.tabId.concat(' > tbody tr')).forEach((row) => {
-            row.remove();
-        });
+        lzDataTable.clearTable(options);
+
+        //VALIDA EXISTÊNCIA DE CONTEÚDO
+        if(!options.data.totalElements){
+            alertify.message('Nenhum registro encontrado!');
+            return false;
+        }
 
         options.data.content.forEach(keyValue => {
             let tr = document.createElement('tr');
@@ -47,7 +51,9 @@ let lzDataTable = {
                     }else{   
                         for(let key in keyValue) {
                             if(colName == key){  
-                                if(colOptions.alias) colName = colAlias;  
+                                if(colOptions.alias) {
+                                    colName = colAlias;
+                                }  
                                 let value = lzDataTable.setMask(jsonPath(keyValue, colName)[0] , colOptions);
                                 lzDataTable.__setTdValue(colOptions, value, tr);
                             }
@@ -65,6 +71,11 @@ let lzDataTable = {
                 lzDataTable.setPageBtn(objPagination, options, i);
             }
         }
+    },
+    clearTable: (options) => {
+        document.querySelectorAll(options.tabId.concat(' > tbody tr')).forEach((row) => {
+            row.remove();
+        });
     },
     __setTdIcons:(icons, tr) => {
         let td = document.createElement('td');            
@@ -139,7 +150,7 @@ let lzDataTable = {
 
         //NULL
         if(!value){
-            return "- - -";
+            return "";
         }
 
         //MASK

@@ -1,12 +1,17 @@
 let administrationNavBar = {
     init: () => {
-        document.querySelector('#menuFormatDeTratamento').addEventListener('click', administrationNavBar.carregarFormaDeTratamento ,false);
+        document.querySelectorAll('.dropdown-item').forEach(dropdown => {     
+            dropdown.addEventListener('click', administrationNavBar.carregarItemDoMenu ,false);
+        });
     },
-    carregarFormaDeTratamento: () => {
+    carregarItemDoMenu: (event) => {
+
+        let str = event.target.getAttribute('data-item');
+        if(!str) return false;
 
         let destiny = document.querySelector('#secAdminstracao');
-        let urlHtml = 'view/pages/formatDeTratamento';
-        let urlJs = 'view/scripts/formatDeTratamento';
+        let urlHtml = 'view/pages/'.concat(str);
+        let urlJs = 'view/scripts/'.concat(str);
         
         lzInicial.fetchToPage(destiny, urlHtml, urlJs);
     }

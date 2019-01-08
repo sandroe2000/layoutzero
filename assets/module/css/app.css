@@ -328,7 +328,7 @@ fieldset > .container-fluid {
 .p-default {
     min-width: 80px;
 }
-.input-group .input-group-append .btn-light {
+.btn-light {
     border: 1px solid #CED4DA;
 }
 .bg-write {

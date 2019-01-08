@@ -2,7 +2,7 @@ let lzComboBox = {
     setComboBox: (select, urlOrData, selConf) => {
         let combo = document.querySelector(select);
         if(!combo) return false;
-        if(!lzInicial.hasAccess(combo, 'V')) return false;
+        //if(!lzInicial.hasAccess(combo, 'V')) return false;
         if(typeof urlOrData === 'string'){
             lzComboBox.__setUrlToComboBox(select, urlOrData, selConf);
         }else{

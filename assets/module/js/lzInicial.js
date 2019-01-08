@@ -143,51 +143,6 @@ let lzInicial = {
             });        
         
     },
-    //TODO - Load url or Json Object
-    // selConf.optionSelected, 
-    // selConf.val, 
-    // selConf.text
-    // selConf.list
-    fetchToSelect: (select, url, selConf) => {
-        let combo = document.querySelector(select);
-        if(!combo) return false;
-        if(!lzInicial.hasAccess(combo, 'V')) return false;
-        
-        fetch(url)
-            .then(response => { 
-                return response.text();
-            })
-            .then(body => { 
-                let json = JSON.parse(body);
-
-                if(json[selConf.list]){
-                    json = json[selConf.list];
-                }
-
-                document.querySelectorAll(select.concat(' option')).forEach(option => {
-                    option.remove();
-                });
-
-                let option = document.createElement('option');
-                    option.value = "";
-                    option.text = "Choose...";
-                combo.appendChild(option);
-
-                json.forEach(item => {
-                    console.info(body);
-                    let option = document.createElement('option');
-                    option.value = item[selConf.val];
-                    option.text = item[selConf.text];
-                    if(selConf.optionSelected && selConf.optionSelected==item[selConf.val]){
-                        option.selected = true;
-                    }
-                    combo.appendChild(option);
-                });
-            })
-            .catch (error => {
-                console.warn(error.message);
-            });
-    },
     populate: function(form, data, basename) {
 
 		for(var key in data) {
