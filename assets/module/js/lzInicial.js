@@ -7,16 +7,13 @@ let lzInicial = {
 
         alertify.set('notifier','position', 'top-right');
                 
-        window.indexedDB.open(dbName, 2).onsuccess = (event) => {
+        window.indexedDB.open(dbName, 3).onsuccess = (event) => {
             const db = event.target.result;
             const transaction = db.transaction(["auth"], 'readonly');
             const authStore = transaction.objectStore("auth");
             authStore.getAll().onsuccess = (event) => {
                 let results = event.target.result;
-                lzInicial.headers = {
-                    "Authorization": results[0].Authorization,
-                    "Content-Type": "application/json"
-                };
+                
                 if(!results.length){
                     alertify.alert()
                         .setting({
@@ -28,29 +25,13 @@ let lzInicial = {
                             }
                         })
                         .show();
-                }
-                let url = lzInicial.host.concat('/users/perfil/')+results[0].login;
-                fetch(url, { method: 'GET',
-                            headers: lzInicial.headers,
-                            mode: 'cors',
-                            cache: 'no-cache'
-                    })
-                    .then(response => {
-                        return response.json();            
-                    })
-                    .then(body => {
-                        if(body.status && body.status==500){
-                            alertify
-                                .alert()
-                                .setting({
-                                    'title': 'Atenção',
-                                    'label': 'Ok',
-                                    'message': body.message
-                                })
-                                .show();
-                        }
-                        lzInicial.perfil = body;
-                    });
+                    return false;
+                }   
+                lzInicial.headers = {
+                    "Authorization": results[0].Authorization,
+                    "Content-Type": "application/json"
+                };
+                lzInicial.perfil = JSON.parse(results[0].Grants);
             };
             transaction.oncomplete = () => {
                 db.close();
@@ -59,7 +40,7 @@ let lzInicial = {
     },
     headers: {},
     singOut: () => {
-        const request = window.indexedDB.open(dbName, 2);
+        const request = window.indexedDB.open(dbName, 3);
         request.onsuccess = (event) => {
             const db = request.result;
             const transaction = db.transaction(["auth"], "readwrite");
@@ -77,7 +58,7 @@ let lzInicial = {
         //debugger;
         if(!destiny) return false;
         let retorno = false;
-        let access = lzInicial.perfil.access;
+        let access = lzInicial.perfil;
         let destinyId;
         if(destiny instanceof Element){
             destinyId = destiny.getAttribute('id');

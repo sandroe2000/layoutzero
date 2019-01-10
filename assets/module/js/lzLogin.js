@@ -38,9 +38,10 @@ let lzLogin = {
             
             let authItem = {
                 login: document.querySelector('#login').value,
-                Authorization: header.get('Authorization').replace('Bearer ','')
+                Authorization: header.get('Authorization').replace('Bearer ',''),
+                Grants: header.get('Grants')
             };
-            window.indexedDB.open(dbName, 2).onsuccess = (event) => {
+            window.indexedDB.open(dbName, 3).onsuccess = (event) => {
                 const db = event.target.result;
                 const transaction = db.transaction(["auth"], "readwrite");
                 const authStore = transaction.objectStore("auth");
