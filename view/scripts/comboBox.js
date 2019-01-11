@@ -1,6 +1,5 @@
 let comboBox = {
     init: () => {
-        debugger;
         document.querySelector('#btnComboBoxNovo').addEventListener('click', (event) => {
             comboBox.tr = null;
             comboBox.item = null;

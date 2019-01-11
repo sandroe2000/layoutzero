@@ -1,0 +1,96 @@
+<div class="container-fluid">
+    <form id="formUsuarioModal" name="formUsuarioModal">
+        <div class="row">
+            <div class="col-md-2">
+                <label>#</label>
+                <input id="usuarioModalId" type="text" class="form-control form-control-sm" disabled />
+            </div>
+            <div class="col-md-4">
+                <label for="usuarioModalUsername">Usuário</label>
+                <input maxlength="60" id="usuarioModalUsername" type="text" class="form-control form-control-sm" />
+            </div>
+            <div class="col-md-2">
+                <label for="usuarioModalPassword">Senha</label>
+                <input maxlength="20" id="usuarioModalPassword" type="text" class="form-control form-control-sm" />
+            </div>
+            <div class="col-md-2">
+                <label for="usuarioModalPasswordConfirm">Confirma</label>
+                <input maxlength="20" id="usuarioModalPasswordConfirm" type="text" class="form-control form-control-sm" />
+            </div>
+            <div class="col-md-2 space-top">
+                <div style="margin-top: 23px">
+                    <div class="pretty p-default">
+                        <input type="checkbox" id="usuarioModalDisabled" value="DISABLED" />
+                        <div class="state p-info">
+                            <label for="usuarioModalDisabled">Inativo</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row mt-2">
+            <div class="col-md-12">
+                <div class="table-responsive-sm">
+                    <table id="tableAccess" class="table table-sm" style="width: 100%">
+                        <thead>
+                            <tr>
+                                <th class="col-w-70" data-column="grant">Permissão<i class="fa fa-sort-desc ml-1" aria-hidden="true"></i></th>
+                                <th class="col-w-10 text-center" data-column="view">Visualizar</th>
+                                <th class="col-w-10 text-center" data-column="edit">Editar</th>
+                                <th class="col-w-10 text-center" data-column="delete">Exluir</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="col-w-60">Usuário</td>
+                                <td class="col-w-10 text-center">                 
+                                    <div class="pretty p-default">
+                                        <input type="checkbox" id="usuarioVIEW" />
+                                        <div class="state p-primary">
+                                            <label></label>
+                                        </div>
+                                    </div>                   
+                                </td>
+                                <td class="col-w-10 text-center">                  
+                                    <div class="pretty p-default">
+                                        <input type="checkbox" id="usuarioEDIT" />
+                                        <div class="state p-primary">
+                                            <label></label>
+                                        </div>
+                                    </div>         
+                                </td>
+                                <td class="col-w-10 text-center">      
+                                    <div class="pretty p-default">
+                                        <input type="checkbox" id="usuarioDELETE" />
+                                        <div class="state p-primary">
+                                            <label></label>
+                                        </div>
+                                    </div>                                   
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12 mt-2">
+                <div class="float-left">
+                    <button id="btnUsuarioCancelar" class="btn btn-sm btn-light mr-1" data-dismiss="modal">Cancelar</button>
+                    <button id="btnUsuarioGravar" class="btn btn-sm btn-primary mr-1">Gravar</button>
+                </div>
+                <select id="sizeAccess" class="form-control-sm float-right">
+                    <option value="5" selected>5</option>
+                    <option value="10">10</option>
+                    <option value="20">20</option>
+                    <option value="20">30</option>
+                    <option value="20">40</option>
+                    <option value="20">50</option>
+                </select>
+                <nav aria-label="Page navigation mt-2 float-right">
+                    <ul id="paginationAccess" class="pagination pagination-sm"></ul>
+                </nav>
+            </div>
+        </div>
+    </form>
+</div>

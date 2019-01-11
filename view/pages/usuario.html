@@ -1,0 +1,59 @@
+<div class="row">
+    <div class="col-md-12">
+        <fieldset>
+            <legend>Cadastro - Usuários</legend>
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-3">
+                        <label for="usuarioNome">Nome</label>
+                        <div class="input-group">
+                            <input class="form-control form-control-sm" type="text" id="usuarioNome">
+                            <div class="input-group-append">
+                                <button id="btnUsuarioSearch" class="btn btn-light btn-sm" type="button">
+                                    <i class="fa fa-search" aria-hidden="true"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mt-2">
+                    <div class="col-md-12">
+                        <div class="table-responsive-sm">
+                            <table id="tableUsuario" class="table table-hover table-sm" style="width: 100%">
+                                <thead>
+                                    <tr>
+                                        <th class="col-w-10" data-column="id" data-limit="30">#<i class="fa fa-sort ml-1" aria-hidden="true"></i></th>
+                                        <th class="col-w-60" data-column="username">Usuário<i class="fa fa-sort-desc ml-1" aria-hidden="true"></i></th>
+                                        <th class="col-w-10" data-column="role">Função<i class="fa fa-sort ml-1" aria-hidden="true"></i></th>
+                                        <th class="col-w-10" data-column="disabled">Inativo<i class="fa fa-sort ml-1" aria-hidden="true"></i></th>
+                                        <th class="col-w-10" data-icon="_TRASH,_EDIT">&nbsp;</th>
+                                    </tr>
+                                </thead>
+                                <tbody></tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12 mt-2">
+                        <div class="float-left">
+                            <button id="btnUsuarioCancelar" class="btn btn-sm btn-light mr-1" data-dismiss="modal">Cancelar</button>
+                            <button id="btnUsuarioNovo" class="btn btn-sm btn-light mr-1">Novo</button>
+                        </div>
+                        <select id="sizeUsuario" class="form-control-sm float-right">
+                            <option value="5" selected>5</option>
+                            <option value="10">10</option>
+                            <option value="20">20</option>
+                            <option value="20">30</option>
+                            <option value="20">40</option>
+                            <option value="20">50</option>
+                        </select>
+                        <nav aria-label="Page navigation mt-2 float-right">
+                            <ul id="paginationUsuario" class="pagination pagination-sm"></ul>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </fieldset>
+    </div>
+</div>

@@ -325,7 +325,7 @@ fieldset > .container-fluid {
     margin-top: 35px;
     margin-bottom: 10px;
 }
-.p-default {
+#frmCustomer .p-default {
     min-width: 80px;
 }
 .btn-light {
