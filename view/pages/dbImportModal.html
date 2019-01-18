@@ -1,9 +1,100 @@
 <div class="container-fluid">
     <form id="formDbImportModal" name="formDbImportModal">
         <div class="row">
-            <div class="col-md-12">
-                Create DB Connection...
+            <div class="col-md-6">
+                <label for="dbImportModalConnName">Connection Name</label>
+                <input type="text" class="form-control form-control-sm" id="dbImportModalConnName" />
+                <input type="hidden"  id="dbImportModalId" />
+            </div>
+            <div class="col-md-6">
+                <label for="dbImportModalDriver">Driver Name</label>
+                <select class="form-control form-control-sm" id="dbImportModalDriver">
+                    <option value="">Selecione</option>
+                    <option value="ORACLE">Oracle Thin</option>
+                    <option value="MYSQL">Mysql</option>
+                    <option value="POSTGRE">PostgreSQL</option>
+                    <option value="SQL_SERVER">MS Sql Server</option>
+                    <option value="ACCESS">MS Access</option>
+                </select>
             </div>
         </div>
+        <div class="row">
+            <div class="col-md-4">
+                <label for="dbImportModalHost">Host</label>
+                <input type="text" class="form-control form-control-sm" id="dbImportModalHost" />
+            </div>            
+            <div class="col-md-2">
+                <label for="dbImportModalPort">Port</label>
+                <input type="text" class="form-control form-control-sm" id="dbImportModalPort" />
+            </div>
+            <div class="col-md-4">
+                <label for="dbImportModalDBName">Database Name</label>
+                <input type="text" class="form-control form-control-sm" id="dbImportModalDBName" />
+            </div>
+            <div class="col-md-2">
+                <label for="dbImportModalOwner">Owner</label>
+                <input type="text" class="form-control form-control-sm" id="dbImportModalOwner" />
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <label for="dbImportModalUserName">User Name</label>
+                <input type="text" class="form-control form-control-sm" id="dbImportModalUserName" />
+            </div>
+            <div class="col-md-6">
+                <label for="dbImportModalPassword">Password</label>
+                <input type="password" class="form-control form-control-sm" id="dbImportModalPassword" />
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-10">
+                <label for="dbImportModalURL">JDBC URL</label>
+                <input type="text" class="form-control form-control-sm" id="dbImportModalURL" />
+            </div>
+            <div class="col-md-2 space-top">
+                <div style="margin-top: 23px">
+                    <div class="pretty p-default">
+                        <input type="checkbox" id="dbImportModalDisabled" value="DISABLED" />
+                        <div class="state p-info">
+                            <label for="dbImportModalDisabled">Disabled</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row mt-2">
+            <div class="col-md-12">
+                <div class="table-responsive-sm">
+                    <table id="tableDbImportModal" class="table table-hover table-sm" style="width: 100%">
+                        <thead>
+                            <tr>
+                                <th class="col-w-10" data-column="id" data-limit="30">#<i class="fa fa-sort ml-1" aria-hidden="true"></i></th>
+                                <th class="col-w-40" data-column="connection">Connection Name<i class="fa fa-sort-desc ml-1" aria-hidden="true"></i></th>
+                                <th class="col-w-20" data-column="driver">Driver Name<i class="fa fa-sort ml-1" aria-hidden="true"></i></th>
+                                <th class="col-w-10" data-column="disabled">Inativo<i class="fa fa-sort ml-1" aria-hidden="true"></i></th>
+                                <th class="col-w-10" data-icon="_TRASH,_EDIT">&nbsp;</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+                <div class="col-md-12 mt-2">
+                    <div class="float-left">
+                        <button id="btDbImportModalCancelar" class="btn btn-sm btn-light mr-1" data-dismiss="modal">Cancelar</button>
+                        <button id="btDbImportModalTest" class="btn btn-sm btn-light mr-1">Testar</button>
+                        <button id="btDbImportModalGravar" class="btn btn-sm btn-primary mr-1">Gravar</button>
+                    </div>
+                    <select id="sizeDbImportModal" class="form-control-sm float-right">
+                        <option value="5" selected>5</option>
+                        <option value="10">10</option>
+                    </select>
+                    <nav aria-label="Page navigation mt-2 float-right">
+                        <ul id="paginationDbImportModal" class="pagination pagination-sm"></ul>
+                    </nav>
+                </div>
+            </div>
     </form>
 </div>
