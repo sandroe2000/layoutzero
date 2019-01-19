@@ -9,7 +9,7 @@ let administrationNavBar = {
         let str = event.target.getAttribute('data-item');
         if(!str) return false;
 
-        let destiny = document.querySelector('#secAdminstracao');
+        let destiny = document.querySelector('#SEC_ADMIN');
         let urlHtml = 'view/pages/'.concat(str);
         let urlJs = 'view/scripts/'.concat(str);
         

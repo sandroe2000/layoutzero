@@ -44,8 +44,8 @@ let lzModal = {
                         return response.text();
                     })
                     .then(_html2 => { 
-                        if(!lzInicial.hasAccess(document.getElementById('secInsideModal'), 'V')) return false;
-                        return document.getElementById('secInsideModal').innerHTML = _html2;
+                        if(!lzInicial.hasAccess(document.getElementById('SEC_INSIDE_MODAL'), 'V')) return false;
+                        return document.getElementById('SEC_INSIDE_MODAL').innerHTML = _html2;
                     })
                     .then(_load2 => {
                         if(urlJs){

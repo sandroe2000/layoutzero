@@ -38,7 +38,7 @@ let dbImportModal = {
         let el = event.target.classList.contains('fa-pencil-square-o');
         let chk = '';
         if(el){
-            if(!lzInicial.hasAccess('dbImportModal', 'W')) {
+            if(!lzInicial.hasAccess('DB_IMPORT_MODAL', 'W')) {
                 //alertify.error('Você não possui acesso a esta função!');
                 //return false;
             }

@@ -8,7 +8,7 @@ let usuario = {
     },
     carregarModal: () => {
         let title = 'Cadastro - Usuário';
-        let destiny = document.querySelector('#secModal');
+        let destiny = document.querySelector('#SEC_MODAL');
         let urlHtml = 'view/pages/usuarioModal';
         let urlJs = 'view/scripts/usuarioModal';        
         lzModal.fetchToPage(destiny, urlHtml, urlJs, title);

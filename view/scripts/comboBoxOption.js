@@ -24,7 +24,7 @@ let comboBoxOption = {
         comboBoxOption.tr = event.target.closest('tr');
         let el = event.target.classList.contains('fa-trash');
         if(el){
-            if(!lzInicial.hasAccess('comboBox', 'D')) {
+            if(!lzInicial.hasAccess('COMBO_BOX_OPTIONS', 'D')) {
                 alertify.error('Você não possui acesso a esta função!');
                 return false;
             }
@@ -57,7 +57,7 @@ let comboBoxOption = {
         let el = event.target.classList.contains('fa-pencil-square-o');
         let chk = '';
         if(el){
-            //if(!lzInicial.hasAccess('comboBox', 'W')) {
+            //if(!lzInicial.hasAccess('COMBO_BOX_OPTIONS', 'W')) {
             //    alertify.error('Você não possui acesso a esta função!');
             //    return false;
             //}

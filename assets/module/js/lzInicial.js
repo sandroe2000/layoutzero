@@ -70,6 +70,7 @@ let lzInicial = {
             for(i in access){        
                 if(access[i].descr == destinyId ){
                     retorno = access[i].value.includes(grantKey);
+                    break;
                 }                
             }
             
