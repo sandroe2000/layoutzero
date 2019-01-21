@@ -85,7 +85,7 @@ header {
 }
 
 main {
-    /*background: #f2f2f2;*/
+    background: #F8F9FA;
     position: absolute;
     top: 50px;
     bottom: 0;
@@ -298,23 +298,25 @@ fieldset {
     border: 1px solid #CED4DA;
     background-color: #fff;
     margin-bottom: 10px;
-    border-radius: 4px 0 0 0;
+    /*border-radius: 4px 0 0 0;*/
 }
 legend {
     position: absolute;
-    top: -1px;
-    left: -1px;
+    top: 3px;
+    left: 0px;
     width: auto;
     max-width: auto;
     padding-left: 10px;
     padding-right: 10px;
-    padding-top: 3px;
-    padding-bottom: 3px;
+    padding-top: 6px;
+    padding-bottom: 6px;
     font-size: 1rem;
-    border: 1px solid #CED4DA;
+    color: #0178BC;
+    font-weight: 700;
+    /*border: 1px solid #CED4DA;*/
     /*border-left: 1px solid #CED4DA;*/
     background-color: #fff;
-    border-radius: 4px 0 4px 0;
+    /*border-radius: 4px 0 4px 0;*/
 }
 fieldset > .container-fluid {
     width: 100%;
@@ -322,7 +324,7 @@ fieldset > .container-fluid {
     padding-left: 10px;
     margin-right: auto;
     margin-left: auto;
-    margin-top: 35px;
+    margin-top: 45px;
     margin-bottom: 10px;
 }
 #frmCustomer .p-default {
@@ -343,6 +345,7 @@ th,
 td {
     white-space: nowrap;
     cursor: default;
+    color: #666;
 }
 .table thead tr th:hover {
     background-color: #f1f1f1 !important;

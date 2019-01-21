@@ -132,9 +132,8 @@ let dbImportModal = {
         url.value = dbImportModal.driver + dbImportModal.hostname + dbImportModal.port + dbImportModal.databaseName;
     },
     connTest: () => {
-
+        event.preventDefault();
         let driverName = document.querySelector('#dbImportModalDriver');
-
         if(driverName[driverName.selectedIndex].value.includes('ORACLE')){
             alertify.success('Connection successfully tested!'); 
         }else{

@@ -8,7 +8,7 @@ let dbImport = {
     },
     newConn: () => {
         let title = 'Cadastro - New DB Conection';
-        let destiny = document.querySelector('#secModal');
+        let destiny = document.querySelector('#SEC_MODAL');
         let urlHtml = 'view/pages/dbImportModal';
         let urlJs = 'view/scripts/dbImportModal';        
         lzModal.fetchToPage(destiny, urlHtml, urlJs, title);
